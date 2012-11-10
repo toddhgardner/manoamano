@@ -56,11 +56,20 @@ Template Name: Project Map
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			};
 			var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-			console.log(map);
+			return map;
+		},
+		addMarker: function(options) {
+			latitudeLongitude = new google.maps.LatLng(options.latitude, options.longitude)
+			new google.maps.Marker({
+				position: latitudeLongitude,
+				map: options.map,
+				title: options.title
+			}); 
 		}
 	};
 
-	archiveProject.initialize();
+	var map = archiveProject.initialize();
+	archiveProject.addMarker({"map":map, "latitude":-16.425548, "longitude":-63.984375, "title":"Test Title"});
 	
 	
 </script>
