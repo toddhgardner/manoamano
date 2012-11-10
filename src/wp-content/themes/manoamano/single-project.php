@@ -28,7 +28,12 @@ single-bookmarks.php
 							<div id="map_canvas"></div>
 						
 						    <header class="article-header">
-							    <h1 class="single-title custom-post-type-title"><a href="<?php echo get_option('siteurl'); ?>/project/">BACK</a> <?php the_title(); ?><a href="javascript:archiveProject.zoomIn(map);">+</a><a href="javascript:archiveProject.zoomOut(map);">-</a></h1>
+							    <h1 class="single-title custom-post-type-title">
+									<a href="<?php echo get_option('siteurl'); ?>/project/">BACK</a> 
+									<?php the_title(); ?>
+									<a href="javascript:archiveProject.zoomBy(map, +1);">+</a>
+									<a href="javascript:archiveProject.zoomBy(map, -1);">-</a>
+								</h1>
 						    </header> <!-- end article header -->
 					
 						    <section class="entry-content clearfix">
@@ -68,16 +73,9 @@ single-bookmarks.php
 									options.map.panBy(-230,0);
 								},
 								
-								zoomIn: function(map) {
+								zoomBy: function(map, amount) {
 									var value = map.getZoom();
-									map.setZoom(value + 1);
-									map.setCenter(new google.maps.LatLng(<?php echo get_post_meta($post->ID,'_project_latitude',true) ?>, <?php echo get_post_meta($post->ID,'_project_longitude',true) ?>));
-									map.panBy(-230,0);
-								},
-								
-								zoomOut: function(map) {
-									var value = map.getZoom();
-									map.setZoom(value - 1);
+									map.setZoom(value + amount);
 									map.setCenter(new google.maps.LatLng(<?php echo get_post_meta($post->ID,'_project_latitude',true) ?>, <?php echo get_post_meta($post->ID,'_project_longitude',true) ?>));
 									map.panBy(-230,0);
 								}
