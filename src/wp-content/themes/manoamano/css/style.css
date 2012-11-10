@@ -1890,3 +1890,57 @@ img.alignleft {
 	margin: 0px;
 	padding: 0px;
 	}
+
+/* Map-Based Project Pages */
+.post-type-archive-project #contentwrap {
+	padding: 0;
+	margin: 0;
+}
+
+.post-type-archive-project #content {
+	width: 100%;
+}
+
+.post-type-archive-project #contentwide {
+	position: relative;
+	z-index: 10;
+	width: 100%;
+}
+
+.post-type-archive-project .postarea h1 {
+	background: none repeat scroll 0 0 #222222 !important;
+}
+
+.post-type-archive-project #map_canvas {
+	position:relative;
+	top: -82px !important;
+	height: 650px;
+	width: 1000px;
+
+}
+
+.transparent {
+	/* Required for IE 5, 6, 7 */
+	/* ...or something to trigger hasLayout, like zoom: 1; */
+	width: 100%; 
+		
+	/* Theoretically for IE 8 & 9 (more valid) */	
+	/* ...but not required as filter works too */
+	/* should come BEFORE filter */
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+	
+	/* This works in IE 8 & 9 too */
+	/* ... but also 5, 6, 7 */
+	filter: alpha(opacity=70);
+	
+	/* Older than Firefox 0.9 */
+	-moz-opacity:0.7;
+	
+	/* Safari 1.x (pre WebKit!) */
+	-khtml-opacity: 0.7;
+    
+	/* Modern!
+	/* Firefox 0.9+, Safari 2?, Chrome any?
+	/* Opera 9+, IE 9+ */
+	opacity: 0.7;
+}

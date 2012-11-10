@@ -26,7 +26,7 @@ Template Name: Project Map
 
 	<div id="contentwide">
     
-        <div class="postarea">
+        <div class="postarea transparent">
     		<h1>Our Projects</h1>
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
