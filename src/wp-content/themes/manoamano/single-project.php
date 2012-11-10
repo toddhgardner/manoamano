@@ -34,13 +34,46 @@ single-bookmarks.php
 						    <section class="entry-content clearfix">
 								<div class="contentScroller">
 									<?php the_content(); ?>
-									<p>Latitude: <?php echo get_post_meta($post->ID,'_project_latitude',true) ?></p>
-									<p>Longitude: <?php echo get_post_meta($post->ID,'_project_longitude',true) ?></p>
 								</div>
 						    </section> <!-- end article section -->
 							
 					    </article> <!-- end article -->
-					
+
+
+						
+						<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHsmNZZdw5ChH3LHg2uEHxkKDLQE0vohs&sensor=false"></script>
+						<script type="text/javascript">
+
+							var archiveProject = {
+								initialize: function() {
+									var mapOptions = {
+										center: new google.maps.LatLng(-16.425548, -63.984375),
+										zoom: 6,
+										mapTypeId: google.maps.MapTypeId.SATELLITE,
+										zoomControl: false,
+										panControl: false,
+										mapTypeControl: false,
+										streetViewControl: false
+									};
+									var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+									return map;
+								},
+								addMarker: function(options) {
+									latitudeLongitude = new google.maps.LatLng(options.latitude, options.longitude)
+									new google.maps.Marker({
+										position: latitudeLongitude,
+										map: options.map,
+										title: options.title
+									}); 
+								}
+							};
+
+							var map = archiveProject.initialize();
+							archiveProject.addMarker({"map":map, "latitude":<?php echo get_post_meta($post->ID,'_project_latitude',true) ?>, "longitude":<?php echo get_post_meta($post->ID,'_project_longitude',true) ?>, "title":"Test Title"});
+							
+							
+						</script>
+						
 					    <?php endwhile; ?>			
 					
 					    <?php else : ?>
@@ -90,7 +123,7 @@ single-bookmarks.php
 		height:350px;
 		position:relative;
 		z-index:1;
-		top:30px;
+		top:60px;
 		left:30px;
 		padding:15px;
 	}
@@ -132,36 +165,3 @@ single-bookmarks.php
     </style>
 
 <![endif]-->
-
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHsmNZZdw5ChH3LHg2uEHxkKDLQE0vohs&sensor=false"></script>
-<script type="text/javascript">
-
-	var archiveProject = {
-		initialize: function() {
-			var mapOptions = {
-				center: new google.maps.LatLng(-16.425548, -63.984375),
-				zoom: 6,
-				mapTypeId: google.maps.MapTypeId.ROADMAP,
-				zoomControl: false,
-				panControl: false,
-				mapTypeControl: false,
-				streetViewControl: false
-			};
-			var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-			return map;
-		},
-		addMarker: function(options) {
-			latitudeLongitude = new google.maps.LatLng(options.latitude, options.longitude)
-			new google.maps.Marker({
-				position: latitudeLongitude,
-				map: options.map,
-				title: options.title
-			}); 
-		}
-	};
-
-	var map = archiveProject.initialize();
-	archiveProject.addMarker({"map":map, "latitude":-16.425548, "longitude":-63.984375, "title":"Test Title"});
-	
-	
-</script>
