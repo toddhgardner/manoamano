@@ -27,7 +27,10 @@ Template Name: Project Map
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
             
             	<!--  Content lives here  -->
-            	<div class="archiveProject-marker" data-latitude="<?php echo get_post_meta($post->ID,'_project_latitude',true) ?>" data-longitude="<?php echo get_post_meta($post->ID,'_project_longitude',true) ?>" data-title="Test Title"></div>
+            	<div class="archiveProject-marker" 
+            		data-latitude="<?php echo get_post_meta($post->ID,'_project_latitude',true) ?>" 
+            		data-longitude="<?php echo get_post_meta($post->ID,'_project_longitude',true) ?>" 
+            		data-title="<?php the_title(); ?>"></div>
 
             <?php endwhile; else: ?>
             
