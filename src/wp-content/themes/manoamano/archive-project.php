@@ -11,6 +11,10 @@ Template Name: Project Map
 		height: 650px;
 		width: 960px;
 	}
+	
+	.archiveProject-marker {
+		display: none;
+	}
 </style>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHsmNZZdw5ChH3LHg2uEHxkKDLQE0vohs&sensor=false"></script>
@@ -28,9 +32,11 @@ Template Name: Project Map
             
             	<!--  Content lives here  -->
             	<div class="archiveProject-marker" 
-            		data-latitude="<?php echo get_post_meta($post->ID,'_project_latitude',true) ?>" 
-            		data-longitude="<?php echo get_post_meta($post->ID,'_project_longitude',true) ?>" 
-            		data-title="<?php the_title(); ?>"></div>
+            			data-latitude="<?php echo get_post_meta($post->ID,'_project_latitude',true) ?>" 
+            			data-longitude="<?php echo get_post_meta($post->ID,'_project_longitude',true) ?>">
+            		<div class="archiveProject-title"><?php the_title(); ?></div>
+            		<div class="archiveProject-excerpt"><?php the_excerpt(); ?></div>
+            	</div>
 
             <?php endwhile; else: ?>
             
