@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+<multiwp_19_option_tree>
+  <row>
+    <id>1</id>
+    <item_id>general_default</item_id>
+    <item_title>Header Stuff</item_title>
+    <item_desc></item_desc>
+    <item_type>heading</item_type>
+    <item_options></item_options>
+    <item_sort>1</item_sort>
+  </row>
+  <row>
+    <id>2</id>
+    <item_id>logo</item_id>
+    <item_title>Logo URL</item_title>
+    <item_desc>Enter URL to image file you would like to use for the logo. You can upload your logo from the &amp;lt;a href=&amp;quot;media-new.php&amp;quot;&amp;gt;Upload New Media&amp;lt;/a&amp;gt; page.&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;</item_desc>
+    <item_type>input</item_type>
+    <item_options></item_options>
+    <item_sort>2</item_sort>
+  </row>
+  <row>
+    <id>3</id>
+    <item_id>tagline</item_id>
+    <item_title>Tagline</item_title>
+    <item_desc>This is controlled from the &amp;lt;a href=&amp;quot;options-general.php&amp;quot;&amp;gt;General Settings&amp;lt;/a&amp;gt; page.&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;</item_desc>
+    <item_type>checkbox</item_type>
+    <item_options>On</item_options>
+    <item_sort>3</item_sort>
+  </row>
+  <row>
+    <id>4</id>
+    <item_id>menu</item_id>
+    <item_title>Menu</item_title>
+    <item_desc>&amp;lt;strong&amp;gt;NOTE:&amp;lt;/strong&amp;gt;
+The menu navigation is controlled from the &amp;lt;a href=&amp;quot;nav-menus.php&amp;quot;&amp;gt;Menu&amp;lt;/a&amp;gt; page.</item_desc>
+    <item_type>textblock</item_type>
+    <item_options></item_options>
+    <item_sort>4</item_sort>
+  </row>
+  <row>
+    <id>5</id>
+    <item_id>general</item_id>
+    <item_title>General</item_title>
+    <item_desc></item_desc>
+    <item_type>heading</item_type>
+    <item_options></item_options>
+    <item_sort>5</item_sort>
+  </row>
+  <row>
+    <id>6</id>
+    <item_id>bg</item_id>
+    <item_title>Default Background Image URL</item_title>
+    <item_desc>Enter URL of image to use when address or background image is not specified for posts and pages.&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;</item_desc>
+    <item_type>input</item_type>
+    <item_options></item_options>
+    <item_sort>6</item_sort>
+  </row>
+  <row>
+    <id>7</id>
+    <item_id>favicon</item_id>
+    <item_title>Favicon URL (optional)</item_title>
+    <item_desc>Browsers that provide favicon support typically display a page&amp;#039;s favicon in the browser&amp;#039;s address bar and next to the page&amp;#039;s name in a list of bookmarks. &amp;lt;a target=&amp;quot;_blank&amp;quot; href=&amp;quot;http://en.wikipedia.org/wiki/Favicon&amp;quot;&amp;gt;More info &#x2192;&amp;lt;/a&amp;gt;</item_desc>
+    <item_type>input</item_type>
+    <item_options></item_options>
+    <item_sort>7</item_sort>
+  </row>
+  <row>
+    <id>8</id>
+    <item_id>crumbs</item_id>
+    <item_title>Bread Crumbs</item_title>
+    <item_desc>Displays path of current page under the page title.&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;</item_desc>
+    <item_type>checkbox</item_type>
+    <item_options>On</item_options>
+    <item_sort>8</item_sort>
+  </row>
+  <row>
+    <id>9</id>
+    <item_id>color</item_id>
+    <item_title>Link Color</item_title>
+    <item_desc>Select a color for links and buttons.&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;</item_desc>
+    <item_type>colorpicker</item_type>
+    <item_options></item_options>
+    <item_sort>9</item_sort>
+  </row>
+  <row>
+    <id>10</id>
+    <item_id>blog_cat</item_id>
+    <item_title>Blog Category</item_title>
+    <item_desc>&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;</item_desc>
+    <item_type>category</item_type>
+    <item_options></item_options>
+    <item_sort>10</item_sort>
+  </row>
+  <row>
+    <id>11</id>
+    <item_id>css</item_id>
+    <item_title>Custom CSS (optional)</item_title>
+    <item_desc>Example: a {color: #000;}</item_desc>
+    <item_type>textarea</item_type>
+    <item_options>10</item_options>
+    <item_sort>11</item_sort>
+  </row>
+  <row>
+    <id>12</id>
+    <item_id>social</item_id>
+    <item_title>Footer Stuff</item_title>
+    <item_desc></item_desc>
+    <item_type>heading</item_type>
+    <item_options></item_options>
+    <item_sort>12</item_sort>
+  </row>
+  <row>
+    <id>13</id>
+    <item_id>footer_widgets</item_id>
+    <item_title>Widgets</item_title>
+    <item_desc>Footer widgets are controlled from the &amp;lt;a href=&amp;quot;widgets.php&amp;quot;&amp;gt;Widgets&amp;lt;/a&amp;gt; page.&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;</item_desc>
+    <item_type>checkbox</item_type>
+    <item_options>On</item_options>
+    <item_sort>13</item_sort>
+  </row>
+  <row>
+    <id>14</id>
+    <item_id>search</item_id>
+    <item_title>Search</item_title>
+    <item_desc>&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;</item_desc>
+    <item_type>checkbox</item_type>
+    <item_options>On</item_options>
+    <item_sort>14</item_sort>
+  </row>
+  <row>
+    <id>15</id>
+    <item_id>toggle</item_id>
+    <item_title>Map Style Toggle Button</item_title>
+    <item_desc>&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;</item_desc>
+    <item_type>checkbox</item_type>
+    <item_options>On</item_options>
+    <item_sort>15</item_sort>
+  </row>
+  <row>
+    <id>16</id>
+    <item_id>zoom_on</item_id>
+    <item_title>Map Zoom Controls</item_title>
+    <item_desc>&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;</item_desc>
+    <item_type>checkbox</item_type>
+    <item_options>On</item_options>
+    <item_sort>16</item_sort>
+  </row>
+  <row>
+    <id>17</id>
+    <item_id>rss</item_id>
+    <item_title>RSS Button</item_title>
+    <item_desc>&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;</item_desc>
+    <item_type>checkbox</item_type>
+    <item_options>On</item_options>
+    <item_sort>17</item_sort>
+  </row>
+  <row>
+    <id>18</id>
+    <item_id>skype</item_id>
+    <item_title>Skype</item_title>
+    <item_desc>Enter URL to Skype profile</item_desc>
+    <item_type>input</item_type>
+    <item_options></item_options>
+    <item_sort>18</item_sort>
+  </row>
+  <row>
+    <id>19</id>
+    <item_id>myspace</item_id>
+    <item_title>MySpace</item_title>
+    <item_desc>Enter URL to MySpace Profile</item_desc>
+    <item_type>input</item_type>
+    <item_options></item_options>
+    <item_sort>19</item_sort>
+  </row>
+  <row>
+    <id>20</id>
+    <item_id>flickr</item_id>
+    <item_title>Flickr</item_title>
+    <item_desc>Enter URL to Flickr profile.</item_desc>
+    <item_type>input</item_type>
+    <item_options></item_options>
+    <item_sort>20</item_sort>
+  </row>
+  <row>
+    <id>21</id>
+    <item_id>linkedin</item_id>
+    <item_title>LinkedIn</item_title>
+    <item_desc>Enter URL to LinkedIn profile.</item_desc>
+    <item_type>input</item_type>
+    <item_options></item_options>
+    <item_sort>21</item_sort>
+  </row>
+  <row>
+    <id>22</id>
+    <item_id>youtube</item_id>
+    <item_title>YouTube</item_title>
+    <item_desc>Enter URL to YouTube channel.</item_desc>
+    <item_type>input</item_type>
+    <item_options></item_options>
+    <item_sort>22</item_sort>
+  </row>
+  <row>
+    <id>23</id>
+    <item_id>vimeo</item_id>
+    <item_title>Vimeo</item_title>
+    <item_desc>Enter URL to vimeo channel.</item_desc>
+    <item_type>input</item_type>
+    <item_options></item_options>
+    <item_sort>23</item_sort>
+  </row>
+  <row>
+    <id>24</id>
+    <item_id>facebook</item_id>
+    <item_title>Facebook</item_title>
+    <item_desc>Enter URL to Facebook profile.</item_desc>
+    <item_type>input</item_type>
+    <item_options></item_options>
+    <item_sort>24</item_sort>
+  </row>
+  <row>
+    <id>25</id>
+    <item_id>twitter</item_id>
+    <item_title>Twitter</item_title>
+    <item_desc>Enter URL to Twitter profile.</item_desc>
+    <item_type>input</item_type>
+    <item_options></item_options>
+    <item_sort>25</item_sort>
+  </row>
+  <row>
+    <id>26</id>
+    <item_id>map_settings</item_id>
+    <item_title>Map Settings</item_title>
+    <item_desc></item_desc>
+    <item_type>heading</item_type>
+    <item_options></item_options>
+    <item_sort>26</item_sort>
+  </row>
+  <row>
+    <id>27</id>
+    <item_id>main_zoom</item_id>
+    <item_title>Category/Tag Zoom Level</item_title>
+    <item_desc>Enter a number between 0 and 20, where &amp;#039;0&amp;#039; is maximum zoomed OUT and &amp;#039;20&amp;#039; is maximum zoomed IN. NOTE: this setting is for maps with multiple items.</item_desc>
+    <item_type>input</item_type>
+    <item_options></item_options>
+    <item_sort>27</item_sort>
+  </row>
+  <row>
+    <id>28</id>
+    <item_id>post_zoom</item_id>
+    <item_title>Post/Page Zoom Level</item_title>
+    <item_desc>Enter a number between 0 and 20, where &amp;#039;0&amp;#039; is maximum zoomed out and &amp;#039;20&amp;#039; is maximum zoomed in. NOTE: this is for individual posts and can be overridden on the post edit page.</item_desc>
+    <item_type>input</item_type>
+    <item_options></item_options>
+    <item_sort>28</item_sort>
+  </row>
+  <row>
+    <id>32</id>
+    <item_id>pin</item_id>
+    <item_title>Custom Pin Marker URL (optional)</item_title>
+    <item_desc>Enter full URL to the image you would like to use for the pin marker on the map. If empty, theme will use default pin. NOTE: this can be overridden on individual post pages.</item_desc>
+    <item_type>input</item_type>
+    <item_options></item_options>
+    <item_sort>29</item_sort>
+  </row>
+  <row>
+    <id>29</id>
+    <item_id>google_custom_fonts</item_id>
+    <item_title>Google Custom Fonts</item_title>
+    <item_desc></item_desc>
+    <item_type>heading</item_type>
+    <item_options></item_options>
+    <item_sort>30</item_sort>
+  </row>
+  <row>
+    <id>30</id>
+    <item_id>google_api</item_id>
+    <item_title>Google Custom Fonts API</item_title>
+    <item_desc>Enter the proper link info provided by &amp;lt;a href=&amp;quot;http://google.com/webfonts&amp;quot;&amp;gt;google.com/webfonts&amp;lt;/a&amp;gt;</item_desc>
+    <item_type>input</item_type>
+    <item_options></item_options>
+    <item_sort>31</item_sort>
+  </row>
+  <row>
+    <id>31</id>
+    <item_id>google_keyword</item_id>
+    <item_title>Google Font CSS Keyword</item_title>
+    <item_desc>Enter the keyword provided by Google for the CSS. For example, if Google provides the following: h1 { font-family: &amp;#039;Gruppo&amp;#039;, arial, serif; }... Gruppo is the keyword.</item_desc>
+    <item_type>input</item_type>
+    <item_options></item_options>
+    <item_sort>32</item_sort>
+  </row>
+</multiwp_19_option_tree>
