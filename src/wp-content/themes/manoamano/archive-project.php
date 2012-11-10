@@ -13,6 +13,8 @@ Template Name: Project Map
 	}
 </style>
 
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHsmNZZdw5ChH3LHg2uEHxkKDLQE0vohs&sensor=false"></script>
+<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/archiveProject.js"></script>
 
 <div id="content">
 
@@ -21,17 +23,15 @@ Template Name: Project Map
 	<div id="contentwide">
     
         <div class="postarea">
-    
+    		
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
             
             	<!--  Content lives here  -->
-            
-            	<h1><?php the_title(); ?></h1>
-            	<h3>Latitude: <?php echo get_post_meta($post->ID,'_project_latitude',true) ?></h3>
-            	<h3>Longitude: <?php echo get_post_meta($post->ID,'_project_longitude',true) ?></h3>
+            	<div class="archiveProject-marker" 
+            		data-latitude="<?php echo get_post_meta($post->ID,'_project_latitude',true) ?>" 
+            		data-longitude="<?php echo get_post_meta($post->ID,'_project_longitude',true) ?>" 
+            		data-title="<?php the_title(); ?>"></div>
 
-            	<?php the_content(__('Read More'));?><div style="clear:both;"></div><?php edit_post_link('(Edit)', '', ''); ?>
-            
             <?php endwhile; else: ?>
             
             <p><?php _e('Sorry, no posts matched your criteria.'); ?></p><?php endif; ?>
@@ -48,31 +48,6 @@ Template Name: Project Map
 
 <?php get_footer(); ?>
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHsmNZZdw5ChH3LHg2uEHxkKDLQE0vohs&sensor=false"></script>
 <script type="text/javascript">
-
-	var archiveProject = {
-		initialize: function() {
-			var mapOptions = {
-				center: new google.maps.LatLng(-16.425548, -63.984375),
-				zoom: 6,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
-			};
-			var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-			return map;
-		},
-		addMarker: function(options) {
-			latitudeLongitude = new google.maps.LatLng(options.latitude, options.longitude)
-			new google.maps.Marker({
-				position: latitudeLongitude,
-				map: options.map,
-				title: options.title
-			}); 
-		}
-	};
-
-	var map = archiveProject.initialize();
-	archiveProject.addMarker({"map":map, "latitude":-16.425548, "longitude":-63.984375, "title":"Test Title"});
-	
-	
+	var map = archiveProject.displayMap();
 </script>
