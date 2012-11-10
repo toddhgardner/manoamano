@@ -1,6 +1,6 @@
-csv_post_title,csv_post_post,csv_post_type,csv_post_excerpt,csv_post_categories,csv_post_tags,csv_post_date,csv_navi_zoom,csv_navi_latitude,csv_navi_longitude
-Aguada Alta - Cruce Sivingani Road,,project,,,,,15,-17.85133,-65.650177
-Aiquile Runway,,project,,,,,15,-18.196575,-65.183601
+csv_post_title,csv_post_post,csv_post_type,csv_post_excerpt,csv_ctax_project_category,csv_post_tags,csv_post_date,csv_navi_zoom,csv_navi_latitude,csv_navi_longitude
+Aguada Alta - Cruce Sivingani Road,,project,,Health,,,15,-17.85133,-65.650177
+Aiquile Runway,,project,,Water,,,15,-18.196575,-65.183601
 Alota Clinic,,project,,,,,15,-21.395861,-67.588234
 Alota Runway,,project,,,,,15,-21.407047,-67.549438
 Alto Buena Vista Clinic,,project,,,,,15,-17.114544,-66.783142

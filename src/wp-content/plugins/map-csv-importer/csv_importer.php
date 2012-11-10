@@ -264,15 +264,11 @@ class CSVImporterPlugin {
             'post_excerpt' => convert_chars($data['csv_post_excerpt']),
             'post_name'    => $data['csv_post_slug'],
             'post_author'  => $this->get_auth_id($data['csv_post_author']),
-            'tax_input'    => $this->get_taxonomies($data),
+            /*'tax_input'    => $this->get_taxonomies($data),*/
+            /*'tax_input'      => [ array( 'project_category' => array( $data['csv_ctax_project_category'] ) ) ],*/
             'post_parent'  => $data['csv_post_parent'],
         );
 		
-		// [WocketWare] TODO Pull Navigator PostMeta from $data
-		//$post_meta = array(
-		//	'navi_zoom'    => $data['csv_post_zoom']
-		//);
-
         // pages don't have tags or categories
         if ('page' !== $type) {
             $new_post['tags_input'] = $data['csv_post_tags'];
@@ -288,8 +284,7 @@ class CSVImporterPlugin {
         // create!
         $id = wp_insert_post($new_post);
 
-		// [WocketWare] TODO Update PostMeta with Navigator Meta
-		//update_post_meta( $id, 'key', $post_meta );
+		wp_set_object_terms( $id, $data['csv_ctax_project_category'], 'project_category', true );
 		
         if ('page' !== $type && !$id) {
             // cleanup new categories on failure

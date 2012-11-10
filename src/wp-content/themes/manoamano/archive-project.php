@@ -25,7 +25,20 @@ Template Name: Project Map
         <div class="postarea">
     		
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-            
+
+			<h3>All Project Categories:</h3>
+			<ul>
+				<?php 
+					$terms = get_terms( 'project_category', array('hide_empty' => true) ); 
+					foreach ( $terms as $term ) {
+						echo "<li>" . $term->name . "</li>";
+					}
+				?>
+			</ul>
+
+            <h3>Post Project Category: <?php echo get_the_term_list($post->ID, 'project_category'); ?> </h3>
+
+
             	<!--  Content lives here  -->
             	<div class="archiveProject-marker" 
             		data-latitude="<?php echo get_post_meta($post->ID,'_project_latitude',true) ?>" 

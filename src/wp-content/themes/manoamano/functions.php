@@ -273,24 +273,32 @@ function register_project_post_type() {
             'rewrite'   => array( 'slug' => 'project' ), /*, 'with_front' => true ), /* you can specify it's url slug */
             'has_archive' => true, /*'project',  you can rename the slug here */
             'capability_type' => 'post',
-            'hierarchical' => false,
+            'hierarchical' => true,
             /* the next one is important, it tells what's enabled in the post editor */
-            'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'sticky')
+            'supports' => array( 'title', 'editor', 'excerpt', 'revisions', 'sticky')
         ) /* end of options */
     ); /* end of register post type */
     
     /* this ads your post categories to your custom post type */
-    register_taxonomy_for_object_type('Airfields', 'project');
-    register_taxonomy_for_object_type('Clinics', 'project');
-    register_taxonomy_for_object_type('Roads', 'project');
-    register_taxonomy_for_object_type('Schools', 'project');
-    register_taxonomy_for_object_type('Communities', 'project');
+    register_taxonomy_for_object_type('project_category', 'project');
     
     /* this ads your post tags to your custom post type */
     //register_taxonomy_for_object_type('post_tag', 'custom_type');
 } 
 add_action( 'init', 'register_project_post_type');
 
+// now let's add custom categories (these act like categories)
+register_taxonomy( 'project_category', 
+    array('project'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
+    array('hierarchical' => true,     /* if this is true, it acts like categories */             
+        'labels' => array(
+            'name' => __( 'Category', 'manoamano' ), /* name of the custom taxonomy */
+        ),
+        'show_ui' => true,
+        'query_var' => true,
+        'rewrite' => array( 'slug' => 'category' ),
+    )
+);   
 
 add_filter( 'cmb_meta_boxes', 'cmb_project_metaboxes' );
 /**
