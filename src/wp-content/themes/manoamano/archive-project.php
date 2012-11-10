@@ -14,9 +14,7 @@ Template Name: Project Map
 </style>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHsmNZZdw5ChH3LHg2uEHxkKDLQE0vohs&sensor=false"></script>
-<!-- <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/archiveProject.js"></script> -->
-
-
+<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/archiveProject.js"></script>
 
 <div id="content">
 
@@ -48,30 +46,5 @@ Template Name: Project Map
 <?php get_footer(); ?>
 
 <script type="text/javascript">
-var archiveProject = {
-	init: function() {
-		var mapOptions = {
-			center: new google.maps.LatLng(-16.425548, -63.984375),
-			zoom: 6,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
-		var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-		return map;
-	},
-	getMarkers: function(map) {
-		jQuery('.archiveProject-marker').each(function(){
-			archiveProject.addMarker({"map":map, "latitude":jQuery(this).data('latitude'), "longitude":jQuery(this).data('longitude'), "title":jQuery(this).data('title')});
-		});
-	},
-	addMarker: function(options) {
-		latitudeLongitude = new google.maps.LatLng(options.latitude, options.longitude);
-		new google.maps.Marker({
-			position: latitudeLongitude,
-			map: options.map,
-			title: options.title
-		}); 
-	}
-};
-var map = archiveProject.init();
-archiveProject.getMarkers(map);
+	var map = archiveProject.displayMap();
 </script>
