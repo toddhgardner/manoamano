@@ -11,6 +11,10 @@ Template Name: Project Map
 		height: 650px;
 		width: 960px;
 	}
+	
+	.archiveProject-marker {
+		display: none;
+	}
 </style>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHsmNZZdw5ChH3LHg2uEHxkKDLQE0vohs&sensor=false"></script>
@@ -23,7 +27,7 @@ Template Name: Project Map
 	<div id="contentwide">
     
         <div class="postarea">
-    		
+    		<h1>Our Projects</h1>
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 			<h3>All Project Categories:</h3>
@@ -41,9 +45,11 @@ Template Name: Project Map
 
             	<!--  Content lives here  -->
             	<div class="archiveProject-marker" 
-            		data-latitude="<?php echo get_post_meta($post->ID,'_project_latitude',true) ?>" 
-            		data-longitude="<?php echo get_post_meta($post->ID,'_project_longitude',true) ?>" 
-            		data-title="<?php the_title(); ?>"></div>
+            			data-latitude="<?php echo get_post_meta($post->ID,'_project_latitude',true) ?>" 
+            			data-longitude="<?php echo get_post_meta($post->ID,'_project_longitude',true) ?>">
+            		<div class="archiveProject-title"><?php the_title(); ?></div>
+            		<div class="archiveProject-excerpt"><?php the_excerpt(); ?><a href="<?php echo the_permalink(); ?>" class="archiveProject-readMore">Read More &#8250;</a></div>
+            	</div>
 
             <?php endwhile; else: ?>
             
