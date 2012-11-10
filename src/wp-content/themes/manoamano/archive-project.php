@@ -27,6 +27,9 @@ Template Name: Project Map
             	<!--  Content lives here  -->
             
             	<h1><?php the_title(); ?></h1>
+            	<h3>Latitude: <?php echo get_post_meta($post->ID,'_project_latitude',true) ?></h3>
+            	<h3>Longitude: <?php echo get_post_meta($post->ID,'_project_longitude',true) ?></h3>
+
             	<?php the_content(__('Read More'));?><div style="clear:both;"></div><?php edit_post_link('(Edit)', '', ''); ?>
             
             <?php endwhile; else: ?>

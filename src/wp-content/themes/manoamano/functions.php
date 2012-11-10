@@ -1,4 +1,15 @@
 <?php
+
+add_action( 'init', 'cmb_initialize_cmb_meta_boxes', 9999 );
+/**
+ * Initialize the metabox class.
+ */
+function cmb_initialize_cmb_meta_boxes() {
+    if ( ! class_exists( 'cmb_Meta_Box' ) )
+        require_once 'metabox/init.php';
+}
+
+
 // Turn a category ID to a Name
 function cat_id_to_name($id) {
 	foreach((array)(get_categories()) as $category) {
@@ -279,6 +290,53 @@ function register_project_post_type() {
     //register_taxonomy_for_object_type('post_tag', 'custom_type');
 } 
 add_action( 'init', 'register_project_post_type');
+
+
+add_filter( 'cmb_meta_boxes', 'cmb_project_metaboxes' );
+/**
+ * Define the metabox and field configurations.
+ *
+ * @param  array $meta_boxes
+ * @return array
+ */
+function cmb_project_metaboxes( array $meta_boxes ) {
+
+    // Start with an underscore to hide fields from custom fields list
+    $prefix = '_project_';
+
+    $meta_boxes[] = array(
+        'id'         => 'project_metabox',
+        'title'      => 'Project Metabox',
+        'pages'      => array( 'project', ), // Post type
+        'context'    => 'normal',
+        'priority'   => 'high',
+        'show_names' => true, // Show field names on the left
+        'fields'     => array(
+            array(
+                'name' => 'Geospacial Coordinates',
+                'desc' => 'The location of this project',
+                'id'   => $prefix . 'geospacial_title',
+                'type' => 'title',
+            ),
+            array(
+                'name' => 'Latitude',
+                /*'desc' => 'field description (optional)',*/
+                'id'   => $prefix . 'latitude',
+                'type' => 'text',
+            ),
+            array(
+                'name' => 'Longitude',
+                /*'desc' => 'field description (optional)',*/
+                'id'   => $prefix . 'longitude',
+                'type' => 'text',
+            )
+        ), 
+    );
+
+    return $meta_boxes;
+}
+
+
 
 // Display home page link in custom menu
 function home_page_menu_args( $args ) {
