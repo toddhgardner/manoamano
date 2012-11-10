@@ -47,8 +47,8 @@ single-bookmarks.php
 							var archiveProject = {
 								initialize: function() {
 									var mapOptions = {
-										center: new google.maps.LatLng(-16.425548, -63.984375),
-										zoom: 6,
+										center: new google.maps.LatLng(<?php echo get_post_meta($post->ID,'_project_latitude',true) ?>, <?php echo get_post_meta($post->ID,'_project_longitude',true) ?>),
+										zoom: <?php echo get_post_meta($post->ID,'_project_map_zoom',true) ?>,
 										mapTypeId: google.maps.MapTypeId.SATELLITE,
 										zoomControl: false,
 										panControl: false,
@@ -64,7 +64,8 @@ single-bookmarks.php
 										position: latitudeLongitude,
 										map: options.map,
 										title: options.title
-									}); 
+									});
+									options.map.panBy(-230,0);
 								}
 							};
 
