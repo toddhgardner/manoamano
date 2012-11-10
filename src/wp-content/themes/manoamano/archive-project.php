@@ -28,6 +28,10 @@ Template Name: Project Map
     
         <div class="postarea">
     		<h1>Our Projects</h1>
+    		<select id="archiveProject-filter">
+    			<option value="all">All</option>
+    			<option value="foo">Option 2</option>
+    		</select>
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 			<h3>All Project Categories:</h3>
@@ -45,6 +49,7 @@ Template Name: Project Map
 
             	<!--  Content lives here  -->
             	<div class="archiveProject-marker" 
+            			data-category="all"
             			data-latitude="<?php echo get_post_meta($post->ID,'_project_latitude',true) ?>" 
             			data-longitude="<?php echo get_post_meta($post->ID,'_project_longitude',true) ?>">
             		<div class="archiveProject-title"><?php the_title(); ?></div>

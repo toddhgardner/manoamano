@@ -7,6 +7,7 @@ var archiveProject = {
 	displayMap: function() {
 		var map = archiveProject.initMap();
 		archiveProject.getMarkers(map);
+		jQuery('#archiveProject-filter').bind('change', archiveProject.filterMarkers);
 	},
 	initMap: function() {
 		var mapOptions = {
@@ -14,16 +15,34 @@ var archiveProject = {
 			zoom: 6,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
-		return new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+		archiveProject.map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+		return archiveProject.map;
+	},
+	filterMarkers: function(event) {
+		// called when dropdown changes
+		archiveProject.getMarkers(archiveProject.map);
 	},
 	/**
 	 * 
 	 * @param map google.maps.Map
 	 */
 	getMarkers: function(map) {
+		
+		// clear out existing markers
+		jQuery(archiveProject.currentMarkers).each(function(){
+			this.setMap(null);
+		});
+		
+		// selected category filter
+		var category = jQuery('#archiveProject-filter').val();
+		
 		jQuery('.archiveProject-marker').each(function(){
-			var marker = archiveProject.addMarker({"map":map, "latitude":jQuery(this).data('latitude'), "longitude":jQuery(this).data('longitude'), "title":jQuery(this).data('title')});
-			archiveProject.bindTooltips({"map":map, "marker":marker, "content": jQuery(this).html()});
+			// only display marker if its type is selected in the filter
+			if (category == jQuery(this).data('category') || category == "all") {
+				var marker = archiveProject.addMarker({"map":map, "latitude":jQuery(this).data('latitude'), "longitude":jQuery(this).data('longitude'), "title":jQuery(this).data('title')});
+				archiveProject.currentMarkers.push(marker);
+				archiveProject.bindTooltips({"map":map, "marker":marker, "content": jQuery(this).html()});
+			}
 		});
 	},
 	/**
@@ -61,5 +80,7 @@ var archiveProject = {
 			archiveProject.infoWindow = new google.maps.InfoWindow({content: options.content});
 			archiveProject.infoWindow.open(options.map, options.marker);
 		});
-	}
+	},
+	map: null,
+	currentMarkers: []
 };
