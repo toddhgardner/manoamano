@@ -329,6 +329,12 @@ function cmb_project_metaboxes( array $meta_boxes ) {
                 /*'desc' => 'field description (optional)',*/
                 'id'   => $prefix . 'longitude',
                 'type' => 'text',
+            ),
+            array(
+                'name' => 'Map Zoom Level',
+                /*'desc' => 'field description (optional)',*/
+                'id'   => $prefix . 'map_zoom',
+                'type' => 'text',
             )
         ), 
     );
