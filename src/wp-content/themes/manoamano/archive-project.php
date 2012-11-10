@@ -28,23 +28,26 @@ Template Name: Project Map
     
         <div class="postarea transparent">
     		<h1>Our Projects</h1>
-            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-			<h3>All Project Categories:</h3>
-			<ul>
+    		<select id="archiveProject-filter">
+				<option value="all">All</option>
 				<?php 
 					$terms = get_terms( 'project_category', array('hide_empty' => true) ); 
 					foreach ( $terms as $term ) {
-						echo "<li>" . $term->name . "</li>";
+						echo "<option value=".$term->name.">".$term->name."</option>";
 					}
 				?>
-			</ul>
-
-            <h3>Post Project Category: <?php echo get_the_term_list($post->ID, 'project_category'); ?> </h3>
-
-
+			</select>
+            <?php if (have_posts()) : while (have_posts()) : the_post();
+            
+	            $terms =  get_the_terms($post->ID, 'project_category'); 
+	            $category="all";
+	            foreach ($terms as $term) {
+					$category = $category."~".$term->name;
+				}
+            ?>
             	<!--  Content lives here  -->
             	<div class="archiveProject-marker" 
+            			data-category="<?php echo $category; ?>"
             			data-latitude="<?php echo get_post_meta($post->ID,'_project_latitude',true) ?>" 
             			data-longitude="<?php echo get_post_meta($post->ID,'_project_longitude',true) ?>">
             		<div class="archiveProject-title"><?php the_title(); ?></div>
