@@ -28,15 +28,22 @@ single-bookmarks.php
 							<div id="map_canvas"></div>
 						
 						    <header class="article-header">
-							    <h1 class="single-title custom-post-type-title">
-									<a href="<?php echo get_option('siteurl'); ?>/project/">BACK</a> 
-									<?php the_title(); ?>
-									<a href="javascript:archiveProject.zoomBy(map, +1);">+</a>
-									<a href="javascript:archiveProject.zoomBy(map, -1);">-</a>
+							    <h1 class="single-title custom-post-type-title transparent">
+									<div class="headerLeft" style="margin-right:10px;">
+										<a href="<?php echo get_option('siteurl'); ?>/project/"><</a> 
+									</div>
+									<div class="headerLeft">
+										<?php the_title(); ?>
+									</div>
+									<div class="headerZoomButtons">
+										<a href="javascript:archiveProject.zoomBy(map, +1);">+</a>
+										<a href="javascript:archiveProject.zoomBy(map, -1);">-</a>
+									</div>
+									<div style="clear:both;"></div>
 								</h1>
 						    </header> <!-- end article header -->
 					
-						    <section class="entry-content clearfix">
+						    <section class="entry-content clearfix transparent">
 								<div class="contentScroller">
 									<?php the_content(); ?>
 								</div>
@@ -116,24 +123,42 @@ single-bookmarks.php
 <?php get_footer(); ?>
 
 <style>
+	.headerLeft {
+		float:left;
+	}
+	
+	.headerZoomButtons {
+		float:right;
+	}
+	
+	.headerLeft a, .headerZoomButtons a {
+		padding:0px 5px;
+		border:1px solid #FFFFFF;
+		-moz-border-radius: 15px;
+		border-radius: 15px;
+	}
+	
+	.headerLeft a:hover, .headerZoomButtons a:hover {
+		border:1px solid #FFFFFF;
+	}
+
 	.article {
 		min-height:650px;
 	}
 	
+	.entry-content, #content h1 {
+		background: #222222;
+	}
+
 	.article-header {
 		z-index:1;
 		position:relative;
 		top:20px;
 	}
 
-	.entry-content, #content h1 {
-		background: rgb(0, 0, 0); /* The Fallback */
-		background: rgba(0, 0, 0, 0.8); 	
-	}
-	
 	.entry-content {
 		width:400px;
-		height:350px;
+		height:460px;
 		position:relative;
 		z-index:1;
 		top:60px;
@@ -142,7 +167,7 @@ single-bookmarks.php
 	}
 	
 	.contentScroller {
-		height:340px;
+		height:450px;
 		overflow-x:hidden;
 		overflow-y:auto;
 		color:#FFFFFF;
