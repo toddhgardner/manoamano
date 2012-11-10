@@ -12,6 +12,7 @@ var archiveProject = {
 	initMap: function() {
 		var mapOptions = {
 			center: new google.maps.LatLng(-16.425548, -63.984375),
+			disableDefaultUI: true,
 			zoom: 6,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
@@ -38,7 +39,7 @@ var archiveProject = {
 		
 		jQuery('.archiveProject-marker').each(function(){
 			// only display marker if its type is selected in the filter
-			if (category == jQuery(this).data('category') || category == "all") {
+			if (jQuery(this).data('category').indexOf(category) != -1) {
 				var marker = archiveProject.addMarker({"map":map, "latitude":jQuery(this).data('latitude'), "longitude":jQuery(this).data('longitude'), "title":jQuery(this).data('title')});
 				archiveProject.currentMarkers.push(marker);
 				archiveProject.bindTooltips({"map":map, "marker":marker, "content": jQuery(this).html()});
