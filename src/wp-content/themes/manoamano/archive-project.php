@@ -27,7 +27,7 @@ Template Name: Project Map
 	<div id="contentwide">
     
         <div class="postarea">
-    		
+    		<h1>Our Projects</h1>
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
             
             	<!--  Content lives here  -->
@@ -35,7 +35,7 @@ Template Name: Project Map
             			data-latitude="<?php echo get_post_meta($post->ID,'_project_latitude',true) ?>" 
             			data-longitude="<?php echo get_post_meta($post->ID,'_project_longitude',true) ?>">
             		<div class="archiveProject-title"><?php the_title(); ?></div>
-            		<div class="archiveProject-excerpt"><?php the_excerpt(); ?></div>
+            		<div class="archiveProject-excerpt"><?php the_excerpt(); ?><a href="<?php echo the_permalink(); ?>" class="archiveProject-readMore">Read More &#8250;</a></div>
             	</div>
 
             <?php endwhile; else: ?>
