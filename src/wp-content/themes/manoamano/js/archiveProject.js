@@ -13,6 +13,7 @@ var archiveProject = {
 			center: new google.maps.LatLng(-16.425548, -63.984375),
 			disableDefaultUI: true,
 			zoom: 6,
+			scrollwheel: false,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 		archiveProject.map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);

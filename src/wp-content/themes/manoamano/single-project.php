@@ -30,14 +30,14 @@ single-bookmarks.php
 						    <header class="article-header">
 							    <h1 class="single-title custom-post-type-title transparent">
 									<div class="headerLeft" style="margin-right:10px;">
-										<a href="<?php echo get_option('siteurl'); ?>/project/"><</a> 
+										<a href="<?php echo get_option('siteurl'); ?>/project/"><span class="iconback"></span></a>
 									</div>
 									<div class="headerLeft">
 										<?php the_title(); ?>
 									</div>
 									<div class="headerZoomButtons">
-										<a href="javascript:archiveProject.zoomBy(map, +1);">+</a>
-										<a href="javascript:archiveProject.zoomBy(map, -1);">-</a>
+										<a class="map-zoomout" href="#"><span class="iconzoomout"></span></a>
+	    								<a class="map-zoomin" href="#"><span class="iconzoomin"></span></a>
 									</div>
 									<div style="clear:both;"></div>
 								</h1>
@@ -65,7 +65,8 @@ single-bookmarks.php
 										zoomControl: false,
 										panControl: false,
 										mapTypeControl: false,
-										streetViewControl: false
+										streetViewControl: false,
+										scrollwheel: false
 									};
 									var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 									return map;
@@ -90,7 +91,12 @@ single-bookmarks.php
 
 							var map = archiveProject.initialize();
 							archiveProject.addMarker({"map":map, "latitude":<?php echo get_post_meta($post->ID,'_project_latitude',true) ?>, "longitude":<?php echo get_post_meta($post->ID,'_project_longitude',true) ?>, "title":"Test Title"});
-							
+							jQuery('.map-zoomout').bind('click', function () {
+								archiveProject.zoomBy(map, -1);
+							});
+							jQuery('.map-zoomin').bind('click', function () {
+								archiveProject.zoomBy(map, 1);
+							});
 							
 						</script>
 						
@@ -129,17 +135,14 @@ single-bookmarks.php
 	
 	.headerZoomButtons {
 		float:right;
+		margin-right: 20px;
 	}
 	
 	.headerLeft a, .headerZoomButtons a {
-		padding:0px 5px;
-		border:1px solid #FFFFFF;
-		-moz-border-radius: 15px;
-		border-radius: 15px;
+		margin: 0 10px;
 	}
 	
 	.headerLeft a:hover, .headerZoomButtons a:hover {
-		border:1px solid #FFFFFF;
 	}
 
 	.article {

@@ -1946,13 +1946,23 @@ img.alignleft {
 	width: 32px;
 	background: url('../images/zoomin.png');
 }
+.iconback {
+	display: inline-block;
+	height: 32px;
+	width: 32px;
+	background: url('../images/back.png');
+}
 
 .post-type-archive-project #map_canvas {
 	position:relative;
-	top: -102px !important;
+	top: -70px !important;
 	height: 650px;
 	width: 1000px;
 
+}
+
+.post-type-archive-project #footer {
+	margin-top: -70px;
 }
 
 .transparent {
