@@ -27,16 +27,22 @@ Template Name: Project Map
 	<div id="contentwide">
     
         <div class="postarea transparent">
-    		<h1>Our Projects</h1>
-    		<select id="archiveProject-filter">
-				<option value="all">All</option>
-				<?php 
-					$terms = get_terms( 'project_category', array('hide_empty' => true) ); 
-					foreach ( $terms as $term ) {
-						echo "<option value=".$term->name.">".$term->name."</option>";
-					}
-				?>
-			</select>
+        	<div class="map-overlay-head">
+	    		<h1>Our Projects</h1>
+	    		<div class="controls">
+	    			<a class="map-zoomout" href="#"><span class="iconzoomout"></span></a>
+	    			<a class="map-zoomin" href="#"><span class="iconzoomin"></span></a>
+		    		<select id="archiveProject-filter">
+						<option value="all">All Projects</option>
+						<?php 
+							$terms = get_terms( 'project_category', array('hide_empty' => true) ); 
+							foreach ( $terms as $term ) {
+								echo "<option value=".$term->name.">".$term->name."</option>";
+							}
+						?>
+					</select>
+				</div>
+			</div>
             <?php if (have_posts()) : while (have_posts()) : the_post();
             
 	            $terms =  get_the_terms($post->ID, 'project_category'); 
@@ -71,5 +77,15 @@ Template Name: Project Map
 <?php get_footer(); ?>
 
 <script type="text/javascript">
-	var map = archiveProject.displayMap();
+	jQuery(document).ready(function() {
+		var map = archiveProject.initialize();
+		archiveProject.displayMap(map);
+	
+		jQuery('.map-zoomout').bind('click', function () {
+			archiveProject.zoomBy(map, -1);
+		});
+		jQuery('.map-zoomin').bind('click', function () {
+			archiveProject.zoomBy(map, 1);
+		});
+	});
 </script>

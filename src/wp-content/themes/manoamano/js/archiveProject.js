@@ -4,12 +4,11 @@
  * Will display markers based off posts.
  */
 var archiveProject = {
-	displayMap: function() {
-		var map = archiveProject.initMap();
+	displayMap: function(map) {
 		archiveProject.getMarkers(map);
 		jQuery('#archiveProject-filter').bind('change', archiveProject.filterMarkers);
 	},
-	initMap: function() {
+	initialize: function() {
 		var mapOptions = {
 			center: new google.maps.LatLng(-16.425548, -63.984375),
 			disableDefaultUI: true,
@@ -22,6 +21,10 @@ var archiveProject = {
 	filterMarkers: function(event) {
 		// called when dropdown changes
 		archiveProject.getMarkers(archiveProject.map);
+	},
+	zoomBy: function(map, amount) {
+		var value = map.getZoom();
+		map.setZoom(value + amount);
 	},
 	/**
 	 * 

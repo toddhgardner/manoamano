@@ -1902,18 +1902,54 @@ img.alignleft {
 }
 
 .post-type-archive-project #contentwide {
+	padding: 0;
 	position: relative;
 	z-index: 10;
 	width: 100%;
 }
 
-.post-type-archive-project .postarea h1 {
+.map-overlay-head {
+	padding: 10px;
+	margin-top: 20px;
 	background: none repeat scroll 0 0 #222222 !important;
+}
+
+.map-overlay-head h1 {
+	display: inline;
+	margin-top: 20px;
+	background: none repeat scroll 0 0 #222222 !important;
+}
+
+.map-overlay-head .controls {
+	float: right;
+}
+
+.map-overlay-head .controls a, 
+.map-overlay-head .controls select {
+	margin: 0 10px;
+}
+
+.map-overlay-head .controls select {
+	position: relative;
+	top: -10px;
+	}
+
+.iconzoomout {
+	display: inline-block;
+	height: 32px;
+	width: 32px;
+	background: url('../images/zoomout.png');
+}
+.iconzoomin {
+	display: inline-block;
+	height: 32px;
+	width: 32px;
+	background: url('../images/zoomin.png');
 }
 
 .post-type-archive-project #map_canvas {
 	position:relative;
-	top: -82px !important;
+	top: -102px !important;
 	height: 650px;
 	width: 1000px;
 
