@@ -43,6 +43,8 @@ Template Name: Project Map
 					</select>
 				</div>
 			</div>
+			<?php //$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
+  			<?php query_posts('post_type=project&posts_per_page=1000'); ?>
             <?php if (have_posts()) : while (have_posts()) : the_post();
             
 	            $terms =  get_the_terms($post->ID, 'project_category'); 
