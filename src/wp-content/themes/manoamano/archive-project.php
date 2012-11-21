@@ -60,9 +60,7 @@ Template Name: Project Map
             		<div class="archiveProject-excerpt"><?php the_excerpt(); ?><a href="<?php echo the_permalink(); ?>" class="archiveProject-readMore">Read More &#8250;</a></div>
             	</div>
 
-            <?php endwhile; else: ?>
-            
-            <p><?php _e('Sorry, no posts matched your criteria.'); ?></p><?php endif; ?>
+            <?php endwhile; endif; ?>
             
         </div>
 		
