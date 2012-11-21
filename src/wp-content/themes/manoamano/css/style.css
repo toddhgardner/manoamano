@@ -1953,6 +1953,20 @@ img.alignleft {
 	background: url('../images/back.png');
 }
 
+a[rel="next"] {
+	display: inline-block;
+	height: 32px;
+	width: 32px;
+	background: url('../images/next.png');
+}
+
+a[rel="prev"] {
+	display: inline-block;
+	height: 32px;
+	width: 32px;
+	background: url('../images/prev.png');
+}
+
 .post-type-archive-project #map_canvas {
 	position:relative;
 	top: -70px !important;
