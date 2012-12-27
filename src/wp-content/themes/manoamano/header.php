@@ -90,6 +90,9 @@
 	
 	<ul id="sociallinks">
 		<li>
+			<a href="http://www.goodnesstv.org/en/profil/manoamanointl"><img alt="goodnessTV" src="<?php bloginfo('template_url'); ?>/images/newfaviconsm.png" /></a>
+		</li>
+		<li>
 			<a href="http://twitter.com/manoamanointl"><img alt="twitter" src="<?php bloginfo('template_url'); ?>/images/twitter.png" /></a>
 		</li>
 		<li>
