@@ -31,12 +31,10 @@ single-bookmarks.php
 							    <h1 class="single-title custom-post-type-title transparent">
 									<div class="headerLeft" style="margin-right:10px;">
 										<a href="<?php echo get_option('siteurl'); ?>/project/"><span class="iconback"></span></a>
-										<?php previous_post_link('%link', '', FALSE); ?>
 									</div>
 									<div class="headerLeft">
 										<?php echo the_title(); ?>
 									</div>
-										<?php next_post_link('%link', '', FALSE); ?>
 									<div class="headerZoomButtons">
 										<a class="map-zoomout" href="#"><span class="iconzoomout"></span></a>
 	    								<a class="map-zoomin" href="#"><span class="iconzoomin"></span></a>
