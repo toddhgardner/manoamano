@@ -373,4 +373,6 @@ add_image_size( 'archive-thumb', 640, 640, true ); // Archive Page Thumbnail
 add_image_size( 'portfolio-1', 950, 720 ); // Portfolio Page 1 Column Images
 add_image_size( 'portfolio-2', 462, 400 ); // Portfolio Page 2 Column Images
 add_image_size( 'portfolio-3', 300, 500 ); // Portfolio Page 3 Column Images
+add_image_size( 'thumb-xs', 40, 40, true ); // Homepage Feature Image
+
 ?>
