@@ -11,10 +11,30 @@ Template Name: Donation Template
 	
 	<div id="contentwide">
     
-		<h1><?php the_title(); ?></h1>
-	
         <div class="postarea">
-    
+    		
+			<div class="donate-wrap">
+				<div class="donate-box">
+					<h2 class="dontate-title">Marketing Message</h2>
+					<h3 class="donate-sub-title">Sub marketing message</h3>
+					<button class="donate-button">Give</button>
+				</div>
+            </div>
+
+            <div class="donate-tabs">
+            	<div class="donate-tab donate-tab-1 active">Tab 1</div>
+            	<div class="donate-tab donate-tab2">Tab 2</div>
+            	<div class="donate-tab donate-tab3">Tab 3</div>
+            	<div class="donate-tab donate-tab4">Tab 4</div>
+            </div>
+            <div class="donate-tabs-content">
+            	<div class="donate-content donate-content-1">content 1</div>
+            	<div class="donate-content donate-content-2">content 2</div>
+            	<div class="donate-content donate-content-3">content 3</div>
+            	<div class="donate-content donate-content-4">content 4</div>
+            </div>
+
+    		<!-- <div class="wysiwig">
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
             
             
@@ -23,7 +43,10 @@ Template Name: Donation Template
             <?php endwhile; else: ?>
             
             <p><?php _e('Sorry, no posts matched your criteria.'); ?></p><?php endif; ?>
+            <div> -->
+
             
+
         </div>
 		
 	</div>
