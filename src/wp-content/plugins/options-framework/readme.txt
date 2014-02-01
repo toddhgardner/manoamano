@@ -1,23 +1,39 @@
 === Options Framework ===
-Contributors: Devin Price
+
+Contributors: @downstairsdev
 Tags: options, theme options
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X238BDP4QGTV2
-Requires at least: 3.0
-Tested up to: 3.2
-Stable tag: 0.8
+Donate link: http://bit.ly/options-donate-2
+Requires at least: 3.6
+Tested up to: 3.7.1
+Stable tag: 1.7.1
 License: GPLv2
 
 == Description ==
 
-The Options Framework Plugin makes it easy to include an options panel in any WordPress theme.  It was built so that theme developers can concentrate on making the actual theme rather than spending a ton of time on creating an options panel from scratch.  It's free to use in both commercial and personal projects, just like WordPress itself.
+The Options Framework Plugin makes it easy to include an options panel in any WordPress theme.  It was built so developers can concentrate on making the actual theme rather than spending time creating an options panel from scratch.  It's free to use in both commercial and personal projects, just like WordPress itself.
+
+= Options Include =
+
+* text input
+* textarea
+* checkbox
+* select
+* radio button
+* upload (image uploader)
+* images (use images instead of radio buttons)
+* background (a set of options to define a background)
+* multicheck
+* color (a jquery color picker)
+* typography (a set of options to define typography)
+* editor
+
+= Learn More =
 
 Please visit [http://wptheming.com/options-framework-plugin](http://wptheming.com/options-framework-plugin) for a full description of how to define and use the theme options.
 
-The code was originally based on the [WooFramework](http://www.woothemes.com/) and their option styles.
-
 == Installation ==
 
-If your theme already has options enabled, they will show up under the apperance menu.
+If your theme already has options enabled, they will show up under the appearance menu.
 
 If your theme doesn't have options, you can define them to options.php of your theme and they will instantly show up.  For more on how to do this, visit [http://wptheming.com/options-framework-plugin](http://wptheming.com/options-framework-plugin).
 
@@ -33,12 +49,12 @@ You can also watch the video screencast I have at [http://wptheming.com/options-
 
 = What options are available to use? =
 
-* text
+* text input
 * textarea
 * checkbox
 * select
-* radio
-* upload (an image uploader)
+* radio button
+* upload (image uploader)
 * images (use images instead of radio buttons)
 * background (a set of options to define a background)
 * multicheck
@@ -47,9 +63,103 @@ You can also watch the video screencast I have at [http://wptheming.com/options-
 
 == Screenshots ==
 
-1. An example of the "Advanced Options" tag in the "Options Check" theme using this plugin.
+1. An example of the "Advanced Options" tab in the "Options Check" theme using this plugin.
 
 == Changelog ==
+
+= 1.7.1 =
+
+* Fix to use option name if set in options.php
+
+= 1.7.0 =
+
+* Update to class based plugin (large code refactor)
+* Drop color picker support for older versions of WordPress
+* Better support for new admin interface in WordPress 3.8
+* Allow option pages without tabs
+
+= 1.6.1 =
+
+* Fix for update notice location
+* Use selected and checked functions more consistently
+* Reuse media modal for uploads
+* Portuguese translations (props @xipasduarte)
+
+= 1.6 =
+
+* Allow media buttons in the editor option
+* JS/CSS should only load on options page
+* Menu tabs should be filterable
+* Menu settings filter
+* Fix js bindings for upload modal (props @themeblvd)
+
+= 1.5.2 =
+
+* Removed update routine to remove "optionsframework" post type
+
+= 1.5.1 =
+
+* Temporarily removed update routine
+
+= 1.5 =
+
+* Updated width of text input
+* New media uploader
+* Dropped custom post types for file attachments
+* Update routine to remove unused 'optionsframework' post types
+* Updated IDs for .tabs and .groups
+* Italian translations (andreabersi.com)
+* Russian translations (verha.net)
+* Swedish translations (kjeell.se)
+
+= 1.4 =
+
+* Add missing sanitization to typography color (@weplantmedia)
+* New colorpicker (props @mattweibe for getting this in WordPress core)
+* Farsi translations (@vahidd.com)
+* Added password option type (props @neojp)
+* Allow ids to passed to tabs (props @themeblvd)
+* Added optionsframework_after_validate hook (h/t @vanpop and @pryley)
+
+= 1.3 =
+
+* Allow options to save when set by theme customizer
+* Save checkbox options to boolean false rather than "0"
+* Added optionsframework_after hook
+* Hungarian translations by kardiweb.org
+
+= 1.2 =
+
+* Fix for font_size santization
+* Added internationalization support (@weslly)
+* Portuguese translations (@weslly)
+* Spanish translations (@sksmatt)
+* Make uploader post type non-public (@samargulies)
+* ID can now be passed on info option for styling purposes
+
+= 1.1 =
+
+* Added support for wp_editor
+* Updated textarea settings to allow rows parameter
+* Updated cursor:default for h3 metabox, props @yurifedorov
+* Filtering of typography options (@mattwiebe)
+* Updated methods for typography options
+
+= 1.0 =
+
+* Added filters for entire options array (props @inxilpro)
+* Added a filter for options.php location (props @mattwiebe)
+* Option header (h4) will not display in panel if name !isset (props @alepee)
+
+= 0.9 =
+
+* Load thickbox using site_url() to allow for https (props @samargulies)
+* Change santization to use $allowedposttags for textarea and info
+* Display notice if theme doesn't support the Options Framework
+* Single checkboxes now use labels
+* CSS updates for formatting long labels
+* Allows dashes in the options id (props @mantone)
+* Uses add_theme_page over add_submenu_page (props @enile8)
 
 = 0.8 =
 
@@ -66,8 +176,8 @@ You can also watch the video screencast I have at [http://wptheming.com/options-
 
 = 0.6 =
 
-* Introduces validation filters
-* Better data sanitization and escaping
+* Introduces validation filters (props @_mfields)
+* Better data sanitization and escaping (props @_mfields)
 * Updates labels in options-interface.php
 * Changes how checkboxes saved in database ("0" or "1")
 * Stores typography, backgrounds and multichecks directly as arrays
