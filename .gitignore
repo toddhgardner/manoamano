@@ -4,3 +4,4 @@ src/.htaccess
 src/sitemap.xml
 src/sitemap.xml.gz
 src/wp-config.php
+src/wp-content/debug.log
