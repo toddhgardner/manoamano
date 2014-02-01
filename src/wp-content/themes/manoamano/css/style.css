@@ -23,7 +23,7 @@ body {
 	background: -o-linear-gradient(top, #4f4f4f 0%,#3d3d3d 100%); /* Opera11.10+ */
 	background: -ms-linear-gradient(top, #4f4f4f 0%,#3d3d3d 100%); /* IE10+ */
 	margin: 0 auto 0;
-	padding: 0; 
+	padding: 0;
     width: 1000px;
 	height:120%;
 	-moz-box-shadow: 0 0 20px #333333;
@@ -37,7 +37,7 @@ body {
 .hidden {
 	display: none;
 	}
-	
+
 /************************************************
 *	Hyperlinks									*
 ************************************************/
@@ -63,7 +63,7 @@ a img {
 	}
 .clear {
 	clear: both;
-	}	
+	}
 code {
 	color: #999999;
 	background: #EAEAEA;
@@ -82,11 +82,11 @@ hr {
 	margin: 6px 0px 8px 0px;
 	padding: 0px;
 	}
-	
+
 /************************************************
 *	Headings									*
 ************************************************/
-	
+
 h1 {
 	color: #333333;
 	font-size: 28px;
@@ -105,7 +105,7 @@ h2 {
 	font-weight: normal;
 	font-style: italic;
 	text-transform: none;
-	
+
 	letter-spacing: -0.5px;
 	margin: 6px 0px 4px 0px;
 	padding: 2px 0px 2px 0px;
@@ -117,7 +117,7 @@ h3 {
 	font-family: Arial,Helvetica,sans-serif;
 	font-weight: normal;
 	font-style: italic;
-	
+
 	margin: 2px 0px 4px 0px;
 	padding: 2px 0px 4px 0px;
 	line-height: 26px;
@@ -128,7 +128,7 @@ h4 {
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: normal;
 	font-style: normal;
-	
+
 	margin: 4px 0px 4px 0px;
 	padding: 4px 0px 4px 0px;
 	line-height: 28px;
@@ -139,7 +139,7 @@ h5 {
 	font-family: Arial,Helvetica,sans-serif;
 	font-weight: normal;
 	font-style: italic;
-	
+
 	text-align: left;
 	padding: 4px 0px 4px 0px;
 	margin: 2px 0px 6px 0px;
@@ -151,7 +151,7 @@ h6 {
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: normal;
 	font-style: normal;
-	
+
 	text-align:left;
 	padding: 4px 0px 4px 0px;
 	margin: 2px 0px 2px 0px;
@@ -166,7 +166,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
 	text-decoration: none;
 	border: none;
 	}
-	
+
 /************************************************
 *	Header  									*
 ************************************************/
@@ -188,10 +188,10 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
 	}
 #header #title a {
 	background: url(../images/logo_blue.png) no-repeat;
-	display: block; 
-	width: 1000px; 
+	display: block;
+	width: 1000px;
 	height: 110px;
-	margin: 0 auto 0; 
+	margin: 0 auto 0;
 	padding: 0;
 	text-indent: -9999px;
 	overflow: hidden;
@@ -202,7 +202,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
 	right: 10px;
 	top: 0px;
 }
-#header #sociallinks li{	
+#header #sociallinks li{
 	display: inline;
 	padding-left:5px;
 }
@@ -323,32 +323,32 @@ div.anythingSlider .arrow a {
 	outline: 0;
 	text-indent: -9999px;
 	}
-div.anythingSlider .forward { 
-	right: 0; 
+div.anythingSlider .forward {
+	right: 0;
 	}
 div.anythingSlider .back {
-	left: 0; 
+	left: 0;
 	}
 div.anythingSlider .back:hover, div.anythingSlider .forward:hover {
 	background-position: -20px 0;
 	}
-div.anythingSlider .forward.disabled { 
-	display: none; 
+div.anythingSlider .forward.disabled {
+	display: none;
 	}
-div.anythingSlider .back.disabled { 
-	display: none; 
+div.anythingSlider .back.disabled {
+	display: none;
 	}
 
 /* Navigation Links */
-div.anythingSlider .anythingControls { 
-	display: none !important; 
+div.anythingSlider .anythingControls {
+	display: none !important;
 	}
 
 /* Autoplay Start/Stop button */
 div.anythingSlider .start-stop {
 	display: none !important;
 	}
-  
+
 /************************************************
 *	Navbar      								*
 ************************************************/
@@ -380,7 +380,7 @@ div.anythingSlider .start-stop {
 	-moz-box-shadow: 0 2px 2px #888888;
 	-webkit-box-shadow: 0 2px 2px #888888;
 	}
-	
+
 /*** ESSENTIAL STYLES ***/
 .menu, .menu * {
 	margin:	0;
@@ -438,7 +438,7 @@ ul.menu li li li.sfHover ul {
 	left: 160px; /* match ul width */
 	top: 0;
 	}
-	
+
 /*** DEMO SKIN ***/
 .menu .current_page_item a,
 .menu .current-menu-item a,
@@ -503,13 +503,13 @@ ul.menu li li li.sfHover ul {
 .menu li li:hover, .menu li li.sfHover {
 	background:	none;
 	outline: 0;
-	} 
+	}
 .menu li li a:focus, .menu li li a:hover, .menu li li a:active {
 	background:	#FFFFFF;
 	color: #275991;
 	outline: 0;
 	}
-	
+
 /*** ARROWS **/
 .menu a.sf-with-ul {
 	padding-right: 25px;
@@ -539,12 +539,12 @@ li.sfHover > a > .sf-sub-indicator {
 	background-position: -10px -100px; /* arrow hovers for modern browsers*/
 	}
 /* point right for anchors in subs */
-.menu ul ul .sf-sub-indicator, ul.menu ul .sf-sub-indicator { 
-	background-position:  -10px 0; 
+.menu ul ul .sf-sub-indicator, ul.menu ul .sf-sub-indicator {
+	background-position:  -10px 0;
 	}
-.menu ul ul a > .sf-sub-indicator, ul.menu ul a > .sf-sub-indicator { 
+.menu ul ul a > .sf-sub-indicator, ul.menu ul a > .sf-sub-indicator {
 	top: 10px;
-	background-position:  0 0; 
+	background-position:  0 0;
 	}
 /* apply hovers to modern browsers */
 .menu ul ul a:focus > .sf-sub-indicator,
@@ -578,8 +578,8 @@ li.sfHover > a > .sf-sub-indicator {
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
-.menu ul.sub-menu a:focus, 
-.menu ul.sub-menu a:hover, 
+.menu ul.sub-menu a:focus,
+.menu ul.sub-menu a:hover,
 .menu ul.sub-menu a:active,
 .menu ul.sub-menu li.current-menu-item a {
 	background:	#FFFFFF;
@@ -591,9 +591,9 @@ li.sfHover > a > .sf-sub-indicator {
 	-webkit-box-shadow: inset 0 0 5px 5px#888;
 	box-shadow: inset 0 0 5px 5px #888;
 	}
-	
+
 /************************************************
-*	Homepage 					     		    * 
+*	Homepage 					     		    *
 ************************************************/
 
 #homepagetop {
@@ -666,7 +666,7 @@ li.sfHover > a > .sf-sub-indicator {
 	font-family: Arial,Helvetica,sans-serif;
 	font-weight: normal;
 	font-style: normal;
-	
+
 	line-height: 34px;
 	margin: 0px 0px 0px 0px;
 	padding: 6px 0px 0px 0px;
@@ -686,13 +686,13 @@ li.sfHover > a > .sf-sub-indicator {
 	margin: 0;
 	padding: 10px 20px 10px 20px;
 	color: #fff;
-}	
+}
 #homepagetop .slideinfo p{
 	background-color: rgba(0, 0, 0, .5);
 	margin: 6px 0 0 0;
 	padding: 10px 25px;
 }
-	
+
 #homepagetop h1 a:hover {
     color: #3399ff;
 	text-decoration: none;
@@ -741,7 +741,7 @@ li.sfHover > a > .sf-sub-indicator {
 	overflow: hidden;
 	-moz-border-radius: 10px;
 	-khtml-border-radius: 10px;
-	-webkit-border-radius: 10px;	
+	-webkit-border-radius: 10px;
 	}
 .homebox.first {
 	margin: 0px;
@@ -775,7 +775,7 @@ li.sfHover > a > .sf-sub-indicator {
 	}
 .homebox p {
 	margin: 0px;
-	
+
 	line-height: 18px;
 	font-size: 12px;
 	overflow: hidden;
@@ -794,7 +794,7 @@ li.sfHover > a > .sf-sub-indicator {
 	margin: 0px;
 	}
 /************************************************
-*	Content 					     		    * 
+*	Content 					     		    *
 ************************************************/
 
 #content {
@@ -846,7 +846,7 @@ li.sfHover > a > .sf-sub-indicator {
 .postarea p {
 	padding: 5px 0px 5px 0px;
 	margin: 0px;
-	}	
+	}
 .postarea ol {
 	margin: 0px 0px 0px 20px;
 	padding: 0px 0px 10px 0px;
@@ -1100,7 +1100,7 @@ blockquote {
 	padding: 4px;
 	border: 1px solid #DDDDDD;
 	}
-	
+
 /************************************************
 *	Portfolio 2 Column							*
 ************************************************/
@@ -1180,7 +1180,7 @@ blockquote {
 	padding: 4px;
 	border: 1px solid #DDDDDD;
 	}
-	
+
 /************************************************
 *	Portfolio 3 Column							*
 ************************************************/
@@ -1261,7 +1261,7 @@ blockquote {
 	padding: 4px;
 	border: 1px solid #DDDDDD;
 	}
-	
+
 /************************************************
 *	WordPress Gallery						    *
 ************************************************/
@@ -1285,9 +1285,9 @@ blockquote {
 .gallery img:hover {
 	background: #EEEEEE;
 	}
-	
+
 /************************************************
-*	Images  					     		    * 
+*	Images  					     		    *
 ************************************************/
 
 img.centered {
@@ -1342,9 +1342,9 @@ img.alignleft {
 	margin: 0px 0px 0px 0px;
 	padding: 5px 0px 0px 0px;
 	}
-	
+
 /************************************************
-*	Sidebar 	        			     	    * 
+*	Sidebar 	        			     	    *
 ************************************************/
 
 #sidebar {
@@ -1381,7 +1381,7 @@ img.alignleft {
 #sidebar ul li {
 
 	}
-#sidebar ul li ul { 
+#sidebar ul li ul {
 	margin: 0px 0px 0px 0px;
 	}
 #sidebar ul li a {
@@ -1407,7 +1407,7 @@ img.alignleft {
 #sidebar #subNavWrapper {
 	margin: 0;
 	padding: 0 0 20px;;
-	
+
 	}
 #sidebar #subNavWrapper li {
 	background-color: #4f4f4f;
@@ -1430,7 +1430,7 @@ img.alignleft {
 #sidebar #subNavWrapper li a:hover{
 	/*color:#3399FF;
 	background-color: #f5f5f5;*/
-	
+
 	padding: 7px;
 	background:	#FFFFFF;
 	color: #275991 !important;
@@ -1442,7 +1442,7 @@ img.alignleft {
 #sidebar #subNavWrapper li a:before{
 	content:'\25BA   ';
 }
-	
+
 /************************************************
 *	Sidebar Widgets								*
 ************************************************/
@@ -1489,7 +1489,7 @@ img.alignleft {
 	margin: 10px 0px 0px 0px !important;
 	text-align: right;
 	}
-	
+
 /************************************************
 *	Custom Menu Widget							*
 ************************************************/
@@ -1509,18 +1509,18 @@ img.alignleft {
 #sidebar ul.menu li a:hover {
 	background: #F5F5F5;
 	color: #3399FF !important;
-	} 
+	}
 #sidebar ul.menu li {
 	float: none;
 	display: block;
 	width: 100%;
 	}
-#sidebar ul.menu li ul.sub-menu, 
+#sidebar ul.menu li ul.sub-menu,
 #sidebar ul.menu li ul.sub-menu:hover {
 	width: 100%;
 	top: 29px;
 	}
-#sidebar ul.menu li ul.sub-menu li, 
+#sidebar ul.menu li ul.sub-menu li,
 #sidebar ul.menu li ul.sub-menu li:hover {
 	background: #F5F5F5;
 	}
@@ -1542,7 +1542,7 @@ img.alignleft {
 #sidebar ul.menu li ul.sub-menu a > .sf-sub-indicator {
 	display: none;
 	}
-	
+
 /************************************************
 *	Search Form									*
 ************************************************/
@@ -1587,7 +1587,7 @@ img.alignleft {
 	background: #666666;
 	color: #CCCCCC;
 	}
-	
+
 /************************************************
 *	Subscribe									*
 ************************************************/
@@ -1656,7 +1656,7 @@ img.alignleft {
 	background: #3399ff;
 	color: #FFFFFF;
 	}
-	
+
 /************************************************
 *	Footer  									*
 ************************************************/
@@ -1698,8 +1698,8 @@ img.alignleft {
 	margin: 6px 0px 0px 0px;
 	}
 #tail {
-	
-}	
+
+}
 /************************************************
 *	Comments									*
 ************************************************/
@@ -1924,7 +1924,7 @@ img.alignleft {
 	float: right;
 }
 
-.map-overlay-head .controls a, 
+.map-overlay-head .controls a,
 .map-overlay-head .controls select {
 	margin: 0 10px;
 }
@@ -1982,23 +1982,23 @@ a[rel="prev"] {
 .transparent {
 	/* Required for IE 5, 6, 7 */
 	/* ...or something to trigger hasLayout, like zoom: 1; */
-	width: 100%; 
-		
-	/* Theoretically for IE 8 & 9 (more valid) */	
+	width: 100%;
+
+	/* Theoretically for IE 8 & 9 (more valid) */
 	/* ...but not required as filter works too */
 	/* should come BEFORE filter */
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
-	
+
 	/* This works in IE 8 & 9 too */
 	/* ... but also 5, 6, 7 */
 	filter: alpha(opacity=70);
-	
+
 	/* Older than Firefox 0.9 */
 	-moz-opacity:0.7;
-	
+
 	/* Safari 1.x (pre WebKit!) */
 	-khtml-opacity: 0.7;
-    
+
 	/* Modern!
 	/* Firefox 0.9+, Safari 2?, Chrome any?
 	/* Opera 9+, IE 9+ */
@@ -2009,7 +2009,7 @@ a[rel="prev"] {
 
  Donationa page styles
 
- */ 
+ */
 
  .donate-wrap{
 	background-image:url(../images/donate-family.jpg);
@@ -2027,8 +2027,13 @@ a[rel="prev"] {
 	background: rgba(255,255,255,.7);
 	border: 2px solid #bebebe;
 	width: 340px;
-	
- }
+}
+
+.stripe-wrap {
+
+}
+
+#wp-stripe-types { display:none !important;}
 
  .donate-button{
 	padding:20px 30px;

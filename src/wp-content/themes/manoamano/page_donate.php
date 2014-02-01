@@ -8,16 +8,18 @@ Template Name: Donation Template
 <div id="content">
 
 	<div id="featureimg"><?php the_post_thumbnail( 'page-feature' ); ?></div>
-	
+
 	<div id="contentwide">
-    
+
         <div class="postarea">
-    		
+
 			<div class="donate-wrap">
 				<div class="donate-box">
 					<h2 class="dontate-title">Marketing Message</h2>
 					<h3 class="donate-sub-title">Sub marketing message</h3>
-					<button class="donate-button">Give</button>
+                    <div class="stripe-wrap">
+                        <?php echo do_shortcode("[wp-stripe]") ?>
+                    </div>
 				</div>
             </div>
 
@@ -36,21 +38,21 @@ Template Name: Donation Template
 
     		<!-- <div class="wysiwig">
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-            
-            
+
+
             <?php the_content(__('Read More'));?><div style="clear:both;"></div><?php edit_post_link('(Edit)', '', ''); ?>
-            
+
             <?php endwhile; else: ?>
-            
+
             <p><?php _e('Sorry, no posts matched your criteria.'); ?></p><?php endif; ?>
             <div> -->
 
-            
+
 
         </div>
-		
+
 	</div>
-			
+
 
 </div>
 
