@@ -2069,12 +2069,12 @@ a[rel="prev"] {
  }
 
  .donate-tab-title{
- 	text-transform: uppercase;
+ 	
  	font-weight: bold;
  }
 
 .donate-tabs-content{
-	padding: 20px;
+	padding: 40px 20px 30px 20px;
 	clear: both;
 }
 
