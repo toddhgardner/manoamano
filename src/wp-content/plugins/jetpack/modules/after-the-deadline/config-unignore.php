@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  *  Called by the TinyMCE plugin when Ignore Always is clicked (setup as an action through admin-ajax.php)
  */
 function AtD_ignore_call() {
@@ -24,12 +24,15 @@ function AtD_ignore_call() {
 	die();
 }
 
-/* 
+/*
  *  Called when a POST occurs, used to save AtD ignored phrases
  */
 function AtD_process_unignore_update() {
 
 	if ( ! AtD_is_allowed() )
+		return;
+
+	if ( ! isset( $_POST['AtD_ignored_phrases'] ) )
 		return;
 
         $user = wp_get_current_user();
@@ -54,25 +57,30 @@ function AtD_display_unignore_form() {
 	if ( ! $user || $user->ID == 0 )
 		return;
 
-	$ignores = AtD_get_setting( $user->ID, 'AtD_ignored_phrases', true );
+	$ignores = AtD_get_setting( $user->ID, 'AtD_ignored_phrases' );
 ?>
 <script>
 function atd_show_phrases( ignored )
 {
-	var element = jQuery( '#atd_ignores' ).get( 0 );
-	var items   = new Array();
+	var element = jQuery( '#atd_ignores' ),
+	    items   = [],
+	    delLink;
 
 	ignored.sort();
 
+	element.empty();
 	for ( var i = 0; i < ignored.length; i++ ) {
-		if ( ignored[i].length > 0 )
-			items.push( '<span id="atd_' + i + '"><a class="ntdelbutton" href="javascript:atd_unignore(\'' + encodeURIComponent( ignored[i].replace("'", "\\'") ) + '\')">X</a>&nbsp;' + ignored[i] + '</span>' );
+		if ( ignored[i].length > 0 ) {
+			delLink = jQuery( '<span id="atd_' + i + '">&nbsp;</span>' );
+			delLink
+				.text( delLink.text() + ignored[i] )
+				.prepend( jQuery( '<a class="ntdelbutton">X</a>' ).data( 'ignored', ignored[i] ) );
+			element.append( delLink ).append( '<br />' );
+		}
 	}
-
-	element.innerHTML = items.length >= 1 ? items.join("<br>") : ''; 
 }
 
-function atd_unignore( phrase, eid ) {
+function atd_unignore( phrase ) {
 	/* get the ignored values and remove the unwanted phrase */
 	var ignored = jQuery( '#AtD_ignored_phrases' ).val().split( /,/g );
         ignored = jQuery.map(ignored, function(value, index) { return value == phrase ? null : value; });
@@ -95,14 +103,18 @@ function atd_ignore () {
 
 	/* update the UI */
 	atd_show_phrases( ignored );
-	jQuery( '#AtD_add_ignore' ).val('');             
+	jQuery( '#AtD_add_ignore' ).val('');
 
 	/* show that nifteroo messaroo to the useroo */
-        jQuery( '#AtD_message' ).show(); 
+        jQuery( '#AtD_message' ).show();
 }
 
 function atd_ignore_init() {
 	jQuery( '#AtD_message' ).hide();
+	jQuery( '#atd_ignores' ).delegate( 'a', 'click', function() {
+		atd_unignore( jQuery(this).data( 'ignored' ) );
+		return false;
+	} );
 	atd_show_phrases( jQuery( '#AtD_ignored_phrases' ).val().split( /,/g ) );
 }
 
@@ -115,7 +127,7 @@ else
    <input type="hidden" name="AtD_ignored_phrases" id="AtD_ignored_phrases" value="<?php echo esc_attr( $ignores ); ?>">
 
           <p style="font-weight: bold"><?php _e( 'Ignored Phrases', 'jetpack' ); ?></font>
-     
+
           <p><?php _e( 'Identify words and phrases to ignore while proofreading your posts and pages:', 'jetpack' ); ?></p>
 
           <p><input type="text" id="AtD_add_ignore" name="AtD_add_ignore"> <input type="button" value="<?php _e( 'Add', 'jetpack' ); ?>" onclick="javascript:atd_ignore()"></p>

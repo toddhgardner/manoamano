@@ -10,6 +10,8 @@ jetpack = {
 	resizeTimer: null,
 	shadowTimer: null,
 	statusText: null,
+	isRTL: !( 'undefined' == typeof isRtl || !isRtl ),
+	didDebug: false,
 
 	init: function() {
 		jetpack.numModules = jQuery( 'div.jetpack-module' ).not( '.placeholder' ).size();
@@ -34,28 +36,51 @@ jetpack = {
 				jetpack.linkClicked.parents( 'div.jetpack-module' ).children( '.jetpack-module-actions' ).children( 'a.jetpack-configure-button' ).hide();
 			}
 		} );
-		
+
 		jQuery( window ).bind( 'resize', function() {
 			jetpack.hide_shadows();
-			
+
 			clearTimeout( jetpack.shadowTimer );
 			jetpack.shadowTimer = setTimeout( function() { jetpack.show_shadows(); }, 200 );
 		});
 
 		jQuery( 'a#jp-debug' ).bind( 'click', function(e) {
 			e.preventDefault();
+			if ( !jetpack.didDebug ) {
+				jetpack.didDebug = true;
+				jQuery( '#jetpack-configuration' ).load( this.href, function() {
+					jQuery.scrollTo( 'max', 'fast' );
+				} );
+			}
+
 			jetpack.toggle_debug();
 		});
-		
-		jQuery( '#jp-disconnect a' ).hover( function() {
-			jetpack.statusText = jQuery( this ).html();
-			jQuery(this).html( jQuery( '#jp-disconnect span' ).html() );
-			jQuery(this).hide().fadeIn(100);
-		}, function() {
-			jQuery(this).html( jetpack.statusText );
-			jQuery(this).hide().fadeIn(100);
-			jetpack.statusText = null;
+
+		var widerWidth = 0;
+		jQuery( '#jp-disconnect a' ).click( function() {
+			if ( confirm( jetpackL10n.ays_disconnect ) ) {
+				jQuery( this ).addClass( 'clicked' ).css( {
+					"background-image": 'url( ' + userSettings.url + 'wp-admin/images/wpspin_light.gif )',
+					"background-position": '9px 5px',
+					"background-size": '16px 16px'
+				} ).unbind( 'click' ).click( function() { return false; } );
+			} else {
+				return false;
+			}
 		} );
+		jQuery( '#jp-unlink a' ).click( function() {
+			if ( confirm( jetpackL10n.ays_unlink ) ) {
+				jQuery( this ).css( {
+					"background-image": 'url( ' + userSettings.url + 'wp-admin/images/wpspin_light.gif )',
+					"background-position": '9px 5px',
+					"background-size": '16px 16px'
+				} ).unbind( 'click' ).click( function() { return false; } );
+			} else {
+				return false;
+			}
+		} );
+
+		jQuery( '#screen-meta, #screen-meta-links' ).wrapAll( '<div class="screen-meta-wrap" />' );
 	},
 
 	level_modules: function() {
@@ -71,7 +96,7 @@ jetpack = {
 		jQuery( 'div.placeholder' ).show();
 
 		var containerWidth = jetpack.container.width(),
-		    needed = 3 * parseInt( containerWidth / 242, 10 ) - jetpack.numModules
+		    needed = 5 * parseInt( containerWidth / 242, 10 ) - jetpack.numModules
 
 		if ( jetpack.numModules * 242 > containerWidth )
 			jQuery( 'div.placeholder' ).slice( needed ).hide();
@@ -90,12 +115,14 @@ jetpack = {
 				jetpack.level_placeholders();
 				jetpack.level_placeholders_on_resize();
 			}, 100 );
-		} );	
+		} );
 	},
 
 	insert_learn_more: function( card, callback ) {
-		var perRow = parseInt( jetpack.container.width() / 242, 10 );
-		var cardPosition = 0;
+		var perRow = parseInt( jetpack.container.width() / 242, 10 ),
+		    cardPosition = 0,
+		    cardRow = 0,
+		    learnMoreOffset = jetpack.isRTL ? 144 : 28;
 
 		// Get the position of the card clicked.
 		jQuery( 'div.jetpack-module', 'div.module-container' ).each( function( i, el ) {
@@ -103,7 +130,7 @@ jetpack = {
 				cardPosition = i;
 		} );
 
-		var cardRow = 1 + parseInt( cardPosition / perRow, 10 );
+		cardRow = 1 + parseInt( cardPosition / perRow, 10 );
 
 		// Insert the more info box after the last item of the row.
 		jQuery( 'div.jetpack-module', 'div.module-container' ).each( function( i, el ) {
@@ -116,12 +143,15 @@ jetpack = {
 						jQuery( window ).scrollTo( ( jQuery( 'div.more-info' ).prev().offset().top ) - 70, 600, function() { if ( typeof callback == 'function' ) callback.call( this ); } );
 					} else {
 						jQuery( 'div.more-info div.jp-content' ).hide();
-						jQuery( 'div.more-info' ).slideUp( 200, function() {
-							jQuery(this).detach().insertAfter( el );
+						jQuery( 'div.more-info' ).css( { height: '230px', minHeight: 0 } ).slideUp( 200, function() {
+							var $this = jQuery(this);
+							$this.detach().insertAfter( el );
 							jQuery( 'div.more-info div.jp-content' ).hide();
 							jetpack.learn_more_content( jQuery(card).attr( 'id' ) );
-							jQuery( 'div.more-info' ).slideDown( 300 );
-							jQuery( window ).scrollTo( ( jQuery( 'div.more-info' ).prev().offset().top ) - 70, 600, function() { if ( typeof callback == 'function' ) callback.call( this ); } );
+							$this.css( { height: '230px', minHeight: 0 } ).slideDown( 300, function() {
+								$this.css( { height: 'auto', minHeight: '230px' } );
+							} );
+							jQuery( window ).scrollTo( ( $this.prev().offset().top ) - 70, 600, function() { if ( typeof callback == 'function' ) callback.call( this ); } );
 						} );
 					}
 
@@ -131,17 +161,20 @@ jetpack = {
 					jQuery( el ).after( '<div id="message" class="more-info jetpack-message"><div class="arrow"></div><div class="jp-content"></div><div class="jp-close">&times;</div><div class="clear"></div></div>' );
 
 					// Show the box
+					jQuery( 'div.more-info' ).css( { height: '230px', minHeight: 0 } );
 					jQuery( 'div.more-info', 'div.module-container' ).hide().slideDown( 400, function() {
+						jQuery( 'div.more-info' ).css( { height: 'auto', minHeight: '230px' } );
 						// Load the content and scroll to it
 						jetpack.learn_more_content( jQuery(card).attr( 'id' ) );
 						jQuery( window ).scrollTo( ( jQuery( 'div.more-info' ).prev().offset().top ) - 70, 600 );
-						
+
 						if ( typeof callback == 'function' ) callback.call( this );
 					} );
-					jQuery( 'div.more-info' ).children( 'div.arrow' ).animate( { left: jQuery(card).offset().left - jetpack.container.offset().left + 28 + 'px' }, 300 );
+
+					jQuery( 'div.more-info' ).children( 'div.arrow' ).animate( { left: jQuery(card).offset().left - jetpack.container.offset().left + learnMoreOffset + 'px' }, 300 );
 				}
-				jQuery( 'div.more-info' ).children( 'div.arrow' ).animate( { left: jQuery(card).offset().left - jetpack.container.offset().left + 28 + 'px' }, 300 );
-				
+				jQuery( 'div.more-info' ).children( 'div.arrow' ).animate( { left: jQuery(card).offset().left - jetpack.container.offset().left + learnMoreOffset + 'px' }, 300 );
+
 				return;
 			}
 		} );
@@ -186,24 +219,28 @@ jetpack = {
 	close_learn_more: function( callback ) {
 		jQuery( 'div.more-info div.jp-content' ).hide();
 
-		jQuery( 'div.more-info' ).slideUp( 200, function() {
+		jQuery( 'div.more-info' ).css( { height: '230px', minHeight: 0 } ).slideUp( 200, function() {
 			jQuery( this ).remove();
 				jQuery( 'a.jetpack-deactivate-button' ).hide();
 				jetpack.linkClicked.parents( 'div.jetpack-module' ).children( '.jetpack-module-actions' ).children( 'a.jetpack-configure-button' ).show();
 			jetpack.linkClicked = null;
-			
+
 			if ( typeof callback == 'function' ) callback.call( this );
 		} );
 	},
 
 	toggle_debug: function() {
-		jQuery('div#jetpack-configuration').toggle();
+		jQuery('div#jetpack-configuration').toggle( 0, function() {
+			if ( jQuery( this ).is( ':visible' ) ) {
+				jQuery.scrollTo( 'max', 'fast' );
+			}
+		} );
 	},
-	
+
 	hide_shadows: function() {
 		jQuery( 'div.jetpack-module, div.more-info' ).css( { '-webkit-box-shadow': 'none' } );
 	},
-	
+
 	show_shadows: function() {
 		jQuery( 'div.jetpack-module' ).css( { '-webkit-box-shadow': 'inset 0 1px 0 #fff, inset 0 0 20px rgba(0,0,0,0.05), 0 1px 2px rgba( 0,0,0,0.1 )' } );
 		jQuery( 'div.more-info' ).css( { '-webkit-box-shadow': 'inset 0 0 20px rgba(0,0,0,0.05), 0 1px 2px rgba( 0,0,0,0.1 )' } );
