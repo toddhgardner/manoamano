@@ -7,7 +7,7 @@
  */
 
 /** Load WordPress Bootstrap */
-require_once('./admin.php');
+require_once( dirname( __FILE__ ) . '/admin.php' );
 
 $parent_file = 'edit-comments.php';
 $submenu_file = 'edit-comments.php';
@@ -36,7 +36,7 @@ if ( isset( $_GET['dt'] ) ) {
  */
 function comment_footer_die( $msg ) {
 	echo "<div class='wrap'><p>$msg</p></div>";
-	include('./admin-footer.php');
+	include( ABSPATH . 'wp-admin/admin-footer.php' );
 	die;
 }
 
@@ -45,20 +45,27 @@ switch( $action ) {
 case 'editcomment' :
 	$title = __('Edit Comment');
 
-	add_contextual_help( $current_screen, '<p>' . __( 'You can edit the information left in a comment if needed. This is often useful when you notice that a commenter has made a typographical error.' ) . '</p>' .
-	'<p>' . __( 'You can also moderate the comment from this screen using the Status box, where you can also change the timestamp of the comment.' ) . '</p>' .
+	get_current_screen()->add_help_tab( array(
+		'id'      => 'overview',
+		'title'   => __('Overview'),
+		'content' =>
+			'<p>' . __( 'You can edit the information left in a comment if needed. This is often useful when you notice that a commenter has made a typographical error.' ) . '</p>' .
+			'<p>' . __( 'You can also moderate the comment from this screen using the Status box, where you can also change the timestamp of the comment.' ) . '</p>'
+	) );
+
+	get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __( 'For more information:' ) . '</strong></p>' .
 	'<p>' . __( '<a href="http://codex.wordpress.org/Administration_Screens#Comments" target="_blank">Documentation on Comments</a>' ) . '</p>' .
 	'<p>' . __( '<a href="http://wordpress.org/support/" target="_blank">Support Forums</a>' ) . '</p>'
 	);
 
 	wp_enqueue_script('comment');
-	require_once('./admin-header.php');
+	require_once( ABSPATH . 'wp-admin/admin-header.php' );
 
 	$comment_id = absint( $_GET['c'] );
 
 	if ( !$comment = get_comment( $comment_id ) )
-		comment_footer_die( __('Oops, no comment with this ID.') . sprintf(' <a href="%s">'.__('Go back').'</a>!', 'javascript:history.go(-1)') );
+		comment_footer_die( __('Oops, no comment with this ID.') . sprintf(' <a href="%s">' . __('Go back') . '</a>.', 'javascript:history.go(-1)') );
 
 	if ( !current_user_can( 'edit_comment', $comment_id ) )
 		comment_footer_die( __('You are not allowed to edit this comment.') );
@@ -68,7 +75,7 @@ case 'editcomment' :
 
 	$comment = get_comment_to_edit( $comment_id );
 
-	include('./edit-form-comment.php');
+	include( ABSPATH . 'wp-admin/edit-form-comment.php' );
 
 	break;
 
@@ -97,7 +104,7 @@ case 'spam'    :
 		die();
  	}
 
-	require_once('./admin-header.php');
+	require_once( ABSPATH . 'wp-admin/admin-header.php' );
 
 	$formaction    = $action . 'comment';
 	$nonce_action  = 'approve' == $action ? 'approve-comment_' : 'delete-comment_';
@@ -108,7 +115,6 @@ case 'spam'    :
 
 <div class="narrow">
 
-<?php screen_icon(); ?>
 <h2><?php echo esc_html( $title ); ?></h2>
 
 <?php
@@ -212,7 +218,7 @@ case 'unapprovecomment' :
 	$noredir = isset($_REQUEST['noredir']);
 
 	if ( !$comment = get_comment($comment_id) )
-		comment_footer_die( __('Oops, no comment with this ID.') . sprintf(' <a href="%s">'.__('Go back').'</a>!', 'edit-comments.php') );
+		comment_footer_die( __('Oops, no comment with this ID.') . sprintf(' <a href="%s">' . __('Go back') . '</a>.', 'edit-comments.php') );
 	if ( !current_user_can( 'edit_comment', $comment->comment_ID ) )
 		comment_footer_die( __('You are not allowed to edit comments on this post.') );
 
@@ -272,6 +278,15 @@ case 'editedcomment' :
 	edit_comment();
 
 	$location = ( empty( $_POST['referredby'] ) ? "edit-comments.php?p=$comment_post_id" : $_POST['referredby'] ) . '#comment-' . $comment_id;
+
+	/**
+	 * Filter the URI the user is redirected to after editing a comment in the admin.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @param string $location The URI the user will be redirected to.
+	 * @param int $comment_id The ID of the comment being edited.
+	 */
 	$location = apply_filters( 'comment_edit_redirect', $location, $comment_id );
 	wp_redirect( $location );
 
@@ -284,6 +299,4 @@ default:
 
 } // end switch
 
-include('./admin-footer.php');
-
-?>
+include( ABSPATH . 'wp-admin/admin-footer.php' );

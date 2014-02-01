@@ -8,7 +8,7 @@
  */
 
 /** Load WordPress Administration Bootstrap */
-require_once( './admin.php' );
+require_once( dirname( __FILE__ ) . '/admin.php' );
 
 if ( ! is_multisite() )
 	wp_die( __( 'Multisite support is not enabled.' ) );
@@ -16,14 +16,20 @@ if ( ! is_multisite() )
 if ( ! current_user_can( 'manage_sites' ) )
 	wp_die( __( 'You do not have sufficient permissions to edit this site.' ) );
 
-add_contextual_help($current_screen,
-	'<p>' . __('The menu is for editing information specific to individual sites, particularly if the admin area of a site is unavailable.') . '</p>' .
-	'<p>' . __('<strong>Info</strong> - The domain and path are rarely edited as this can cause the site to not work properly. The Registered date and Last Updated date are displayed. Network admins can mark a site as archived, spam, deleted and mature, to remove from public listings or disable.') . '</p>' .
-	'<p>' . __('<strong>Users</strong> - This displays the users associated with this site. You can also change their role, reset their password, or remove them from the site. Removing the user from the site does not remove the user from the network.') . '</p>' .
-	'<p>' . sprintf( __('<strong>Themes</strong> - This area shows themes that are not already enabled across the network. Enabling a theme in this menu makes it accessible to this site. It does not activate the theme, but allows it to show in the site&#8217;s Appearance menu. To enable a theme for the entire network, see the <a href="%s">Network Themes</a> screen.' ), network_admin_url( 'themes.php' ) ) . '</p>' .
-	'<p>' . __('<strong>Settings</strong> - This page shows a list of all settings associated with this site. Some are created by WordPress and others are created by plugins you activate. Note that some fields are grayed out and say Serialized Data. You cannot modify these values due to the way the setting is stored in the database.') . '</p>' .
+	get_current_screen()->add_help_tab( array(
+		'id'      => 'overview',
+		'title'   => __('Overview'),
+		'content' =>
+			'<p>' . __('The menu is for editing information specific to individual sites, particularly if the admin area of a site is unavailable.') . '</p>' .
+			'<p>' . __('<strong>Info</strong> - The domain and path are rarely edited as this can cause the site to not work properly. The Registered date and Last Updated date are displayed. Network admins can mark a site as archived, spam, deleted and mature, to remove from public listings or disable.') . '</p>' .
+			'<p>' . __('<strong>Users</strong> - This displays the users associated with this site. You can also change their role, reset their password, or remove them from the site. Removing the user from the site does not remove the user from the network.') . '</p>' .
+			'<p>' . sprintf( __('<strong>Themes</strong> - This area shows themes that are not already enabled across the network. Enabling a theme in this menu makes it accessible to this site. It does not activate the theme, but allows it to show in the site&#8217;s Appearance menu. To enable a theme for the entire network, see the <a href="%s">Network Themes</a> screen.' ), network_admin_url( 'themes.php' ) ) . '</p>' .
+			'<p>' . __('<strong>Settings</strong> - This page shows a list of all settings associated with this site. Some are created by WordPress and others are created by plugins you activate. Note that some fields are grayed out and say Serialized Data. You cannot modify these values due to the way the setting is stored in the database.') . '</p>'
+) );
+
+get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __('For more information:') . '</strong></p>' .
-	'<p>' . __('<a href="http://codex.wordpress.org/Network_Admin_Sites_Screens" target="_blank">Documentation on Site Management</a>') . '</p>' .
+	'<p>' . __('<a href="http://codex.wordpress.org/Network_Admin_Sites_Screen" target="_blank">Documentation on Site Management</a>') . '</p>' .
 	'<p>' . __('<a href="http://wordpress.org/support/forum/multisite/" target="_blank">Support Forums</a>') . '</p>'
 );
 
@@ -44,7 +50,7 @@ if ( isset($_REQUEST['action']) && 'update-site' == $_REQUEST['action'] ) {
 	switch_to_blog( $id );
 
 	if ( isset( $_POST['update_home_url'] ) && $_POST['update_home_url'] == 'update' ) {
-		$blog_address = get_blogaddress_by_domain( $_POST['blog']['domain'], $_POST['blog']['path'] );
+		$blog_address = esc_url_raw( $_POST['blog']['domain'] . $_POST['blog']['path'] );
 		if ( get_option( 'siteurl' ) != $blog_address )
 			update_option( 'siteurl', $blog_address );
 
@@ -56,7 +62,7 @@ if ( isset($_REQUEST['action']) && 'update-site' == $_REQUEST['action'] ) {
 	delete_option( 'rewrite_rules' );
 
 	// update blogs table
-	$blog_data = stripslashes_deep( $_POST['blog'] );
+	$blog_data = wp_unslash( $_POST['blog'] );
 	$existing_details = get_blog_details( $id, false );
 	$blog_data_checkboxes = array( 'public', 'archived', 'spam', 'mature', 'deleted' );
 	foreach ( $blog_data_checkboxes as $c ) {
@@ -85,12 +91,11 @@ $title = sprintf( __('Edit Site: %s'), $site_url_no_http );
 $parent_file = 'sites.php';
 $submenu_file = 'sites.php';
 
-require('../admin-header.php');
+require( ABSPATH . 'wp-admin/admin-header.php' );
 
 ?>
 
 <div class="wrap">
-<?php screen_icon('ms-admin'); ?>
 <h2 id="edit-site"><?php echo $title_site_url_linked ?></h2>
 <h3 class="nav-tab-wrapper">
 <?php
@@ -102,7 +107,7 @@ $tabs = array(
 );
 foreach ( $tabs as $tab_id => $tab ) {
 	$class = ( $tab['url'] == $pagenow ) ? ' nav-tab-active' : '';
-	echo '<a href="' . $tab['url'] . '?id=' . $id .'" class="nav-tab' . $class . '">' .  esc_html( $tab['label'] ) . '</a>';
+	echo '<a href="' . $tab['url'] . '?id=' . $id .'" class="nav-tab' . $class . '">' . esc_html( $tab['label'] ) . '</a>';
 }
 ?>
 </h3>
@@ -129,10 +134,15 @@ if ( ! empty( $messages ) ) {
 			<th scope="row"><?php _e( 'Path' ) ?></th>
 			<?php if ( $is_main_site ) { ?>
 			<td><code><?php echo esc_attr( $details->path ) ?></code></td>
-			<?php } else { ?>
+			<?php
+			} else {
+				switch_to_blog( $id );
+			?>
 			<td><input name="blog[path]" type="text" id="path" value="<?php echo esc_attr( $details->path ) ?>" size="40" style='margin-bottom:5px;' />
-			<br /><input type="checkbox" style="width:20px;" name="update_home_url" value="update" <?php if ( get_blog_option( $id, 'siteurl' ) == untrailingslashit( get_blogaddress_by_id ($id ) ) || get_blog_option( $id, 'home' ) == untrailingslashit( get_blogaddress_by_id( $id ) ) ) echo 'checked="checked"'; ?> /> <?php _e( 'Update <code>siteurl</code> and <code>home</code> as well.' ); ?></td>
-			<?php } ?>
+			<br /><input type="checkbox" style="width:20px;" name="update_home_url" value="update" <?php if ( get_option( 'siteurl' ) == untrailingslashit( get_blogaddress_by_id ($id ) ) || get_option( 'home' ) == untrailingslashit( get_blogaddress_by_id( $id ) ) ) echo 'checked="checked"'; ?> /> <?php _e( 'Update <code>siteurl</code> and <code>home</code> as well.' ); ?></td>
+			<?php
+				restore_current_blog();
+			} ?>
 		</tr>
 		<tr class="form-field">
 			<th scope="row"><?php _ex( 'Registered', 'site' ) ?></th>
@@ -166,4 +176,4 @@ if ( ! empty( $messages ) ) {
 
 </div>
 <?php
-require('../admin-footer.php');
+require( ABSPATH . 'wp-admin/admin-footer.php' );
