@@ -69,25 +69,10 @@ Template Name: Donation Template
             	<div class="donate-content donate-content-3"><?php echo get_field('content3'); ?></div>
             	<div class="donate-content donate-content-4"><?php echo get_field('content4'); ?></div>
             </div>
-<<<<<<< HEAD
+
 			
 			<?php endwhile; endif;  ?>
-    		
-=======
-
-    		<!-- <div class="wysiwig">
-            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-
-            <?php the_content(__('Read More'));?><div style="clear:both;"></div><?php edit_post_link('(Edit)', '', ''); ?>
-
-            <?php endwhile; else: ?>
-
-            <p><?php _e('Sorry, no posts matched your criteria.'); ?></p><?php endif; ?>
-            <div> -->
->>>>>>> 5a8d6cca9b492ef634e77cd46eefb1b7527ae20a
-
-
+  
 
         </div>
 
