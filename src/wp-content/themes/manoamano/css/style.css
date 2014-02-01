@@ -2004,3 +2004,54 @@ a[rel="prev"] {
 	/* Opera 9+, IE 9+ */
 	opacity: 0.7;
 }
+
+/*
+
+ Donationa page styles
+
+ */ 
+
+ .donate-wrap{
+	background-image:url(../images/donate-family.jpg);
+	height: 414px;
+	position: relative;
+	text-align: center;
+	background-size: 100%;
+ }
+
+ .donate-box{
+ 	float: right;
+	margin: 90px 50px  0;
+	padding: 40px;
+	background: #fff;
+	background: rgba(255,255,255,.7);
+	border: 2px solid #bebebe;
+	width: 340px;
+	
+ }
+
+ .donate-button{
+	padding:20px 30px;
+	background:#2e9df7;
+	color:#fff;
+	border:none;
+	font-size: 16px;
+	border-radius: 5px;
+ }
+
+ .donate-tab{
+ 	width:25%;
+ 	float: left;
+ 	box-sizing: border-box;
+ 	padding: 30px;
+ 	background: #333;
+ 	color: #333;
+ }
+ .donate-tab:hover{
+ 	background: #ccc;
+ }
+
+ .donate-tab.active{
+ 	font-weight: bold;
+ 	background: #fff;
+ }
