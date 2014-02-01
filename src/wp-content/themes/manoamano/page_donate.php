@@ -8,16 +8,19 @@ Template Name: Donation Template
 <div id="content">
 
 	<div id="featureimg"><?php the_post_thumbnail( 'page-feature' ); ?></div>
-	
+
 	<div id="contentwide">
-    
+
         <div class="postarea">
+
     		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 			<div class="donate-wrap">
 				<div class="donate-box">
 					<h2 class="dontate-title"><?php echo get_field('donation_box_header'); ?></h2>
 					<h3 class="donate-sub-title"><?php echo get_field('donation_box_subheader'); ?></h3>
-					<button class="donate-button"></button>
+					<div class="stripe-wrap">
+                        <?php echo do_shortcode("[wp-stripe]") ?>
+                    </div>
 				</div>
             </div>
 
@@ -66,16 +69,30 @@ Template Name: Donation Template
             	<div class="donate-content donate-content-3"><?php echo get_field('content3'); ?></div>
             	<div class="donate-content donate-content-4"><?php echo get_field('content4'); ?></div>
             </div>
+<<<<<<< HEAD
 			
 			<?php endwhile; endif;  ?>
     		
+=======
 
-            
+    		<!-- <div class="wysiwig">
+            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+
+            <?php the_content(__('Read More'));?><div style="clear:both;"></div><?php edit_post_link('(Edit)', '', ''); ?>
+
+            <?php endwhile; else: ?>
+
+            <p><?php _e('Sorry, no posts matched your criteria.'); ?></p><?php endif; ?>
+            <div> -->
+>>>>>>> 5a8d6cca9b492ef634e77cd46eefb1b7527ae20a
+
+
 
         </div>
-		
+
 	</div>
-			
+
 
 </div>
 

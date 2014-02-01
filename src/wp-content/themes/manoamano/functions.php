@@ -17,7 +17,7 @@ function cat_id_to_name($id) {
 	}
 }
 
-/* 
+/*
  * Helper function to return the theme option value. If no value has been saved, it returns $default.
  * Needed because options are saved as serialized strings.
  *
@@ -26,22 +26,22 @@ function cat_id_to_name($id) {
 
 if ( !function_exists( 'of_get_option' ) ) {
 	function of_get_option($name, $default = 'false') {
-		
+
 		$optionsframework_settings = get_option('optionsframework');
-		
+
 		// Gets the unique option id
 		$option_name = $option_name = $optionsframework_settings['id'];
-		
+
 		if ( get_option($option_name) ) {
 			$options = get_option($option_name);
 		}
-			
+
 		if ( !empty($options[$name]) ) {
 			return $options[$name];
 		} else {
 			return $default;
 		}
-	}	
+	}
 }
 
 if ( !function_exists( 'optionsframework_add_page' ) && current_user_can('edit_theme_options') ) {
@@ -56,7 +56,7 @@ if ( !function_exists( 'optionsframework_page_notice' ) ) {
 	add_thickbox(); // Required for the plugin install dialog.
 
 	function optionsframework_page_notice() { ?>
-	
+
 		<div class="wrap">
 		<?php screen_icon( 'themes' ); ?>
 		<h2><?php _e('Theme Options','organicthemes'); ?></h2>
@@ -109,7 +109,7 @@ function the_content_limit($max_char, $more_link_text = 'Read More', $striptease
         echo "'>".$more_link_text."</a>";
         echo "</p>";
    }
-   
+
    else {
       echo "<p>";
       echo $content;
@@ -147,23 +147,23 @@ add_action('admin_menu', 'mytheme_add_box');
 // Add meta box
 function mytheme_add_box() {
     global $meta_box;
-    
+
     add_meta_box($meta_box['id'], $meta_box['title'], 'mytheme_show_box', $meta_box['page'], $meta_box['context'], $meta_box['priority']);
 }
 
 // Callback function to show fields in meta box
 function mytheme_show_box() {
     global $meta_box, $post;
-    
+
     // Use nonce for verification
     echo '<input type="hidden" name="mytheme_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
-    
+
     echo '<table class="form-table">';
 
     foreach ($meta_box['fields'] as $field) {
         // get current post meta data
         $meta = get_post_meta($post->ID, $field['id'], true);
-        
+
         echo '<tr>',
                 '<th style="width:20%"><label for="', $field['id'], '">', $field['name'], '</label></th>',
                 '<td>';
@@ -175,7 +175,7 @@ function mytheme_show_box() {
         echo     '<td>',
             '</tr>';
     }
-    
+
     echo '</table>';
 }
 
@@ -184,7 +184,7 @@ add_action('save_post', 'mytheme_save_data');
 // Save data from meta box
 function mytheme_save_data($post_id) {
     global $meta_box;
-    
+
     // verify nonce
     if (!wp_verify_nonce($_POST['mytheme_meta_box_nonce'], basename(__FILE__))) {
         return $post_id;
@@ -203,11 +203,11 @@ function mytheme_save_data($post_id) {
     } elseif (!current_user_can('edit_post', $post_id)) {
         return $post_id;
     }
-    
+
     foreach ($meta_box['fields'] as $field) {
         $old = get_post_meta($post_id, $field['id'], true);
         $new = $_POST[$field['id']];
-        
+
         if ($new && $new != $old) {
             update_post_meta($post_id, $field['id'], $new);
         } elseif ('' == $new && $old) {
@@ -243,9 +243,9 @@ add_action('init','register_menus');
 
 
 // let's create the function for the custom type
-function register_project_post_type() { 
+function register_project_post_type() {
     /* (http://codex.wordpress.org/Function_Reference/register_post_type) */
-    register_post_type( 'project', 
+    register_post_type( 'project',
         // let's now add all the options for this post type
         array('labels' => array(
             'name' => __('Projects', 'post type general name'), /* This is the Title of the Group */
@@ -257,8 +257,8 @@ function register_project_post_type() {
             'edit_item' => __('Edit Project'), /* Edit Display Title */
             'new_item' => __('New Project'), /* New Display Title */
             'view_item' => __('View Project'), /* View Display Title */
-            'search_items' => __('Search Projects'), /* Search Custom Type Title */ 
-            'not_found' =>  __('Nothing found in the Database.'), /* This displays if there are no entries yet */ 
+            'search_items' => __('Search Projects'), /* Search Custom Type Title */
+            'not_found' =>  __('Nothing found in the Database.'), /* This displays if there are no entries yet */
             'not_found_in_trash' => __('Nothing found in Trash'), /* This displays if there is nothing in the trash */
             'parent_item_colon' => ''
             ), /* end of arrays */
@@ -268,7 +268,7 @@ function register_project_post_type() {
             'exclude_from_search' => false,
             'show_ui' => true,
             'query_var' => true,
-            'menu_position' => 8, /* this is what order you want it to appear in on the left hand side menu */ 
+            'menu_position' => 8, /* this is what order you want it to appear in on the left hand side menu */
             'menu_icon' => get_stylesheet_directory_uri() . '/images/project-icon.png', /* the icon for the custom post type menu */
             'rewrite'   => array( 'slug' => 'project' ), /*, 'with_front' => true ), /* you can specify it's url slug */
             'has_archive' => true, /*'project',  you can rename the slug here */
@@ -278,19 +278,19 @@ function register_project_post_type() {
             'supports' => array( 'title', 'editor', 'excerpt', 'revisions', 'sticky')
         ) /* end of options */
     ); /* end of register post type */
-    
+
     /* this ads your post categories to your custom post type */
     register_taxonomy_for_object_type('project_category', 'project');
-    
+
     /* this ads your post tags to your custom post type */
     //register_taxonomy_for_object_type('post_tag', 'custom_type');
-} 
+}
 add_action( 'init', 'register_project_post_type');
 
 // now let's add custom categories (these act like categories)
-register_taxonomy( 'project_category', 
+register_taxonomy( 'project_category',
     array('project'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
-    array('hierarchical' => true,     /* if this is true, it acts like categories */             
+    array('hierarchical' => true,     /* if this is true, it acts like categories */
         'labels' => array(
             'name' => __( 'Category', 'manoamano' ), /* name of the custom taxonomy */
         ),
@@ -298,7 +298,7 @@ register_taxonomy( 'project_category',
         'query_var' => true,
         'rewrite' => array( 'slug' => 'category' ),
     )
-);   
+);
 
 add_filter( 'cmb_meta_boxes', 'cmb_project_metaboxes' );
 /**
@@ -344,7 +344,7 @@ function cmb_project_metaboxes( array $meta_boxes ) {
                 'id'   => $prefix . 'map_zoom',
                 'type' => 'text',
             )
-        ), 
+        ),
     );
 
     return $meta_boxes;
@@ -375,4 +375,19 @@ add_image_size( 'portfolio-2', 462, 400 ); // Portfolio Page 2 Column Images
 add_image_size( 'portfolio-3', 300, 500 ); // Portfolio Page 3 Column Images
 add_image_size( 'thumb-xs', 40, 40, true ); // Homepage Feature Image
 
-?>
+
+
+add_filter('wp_stripe_filter_form', 'mam_wp_stripe_filter_form');
+
+function mam_wp_stripe_filter_form( $html ) {
+
+    // change comments to address
+    $html = preg_replace('/placeholder="Comment"/', 'placeholder="Address"', $html);
+
+    // add default donation value
+    $html = preg_replace('/name="wp_stripe_amount"/', 'name="wp_stripe_amount" value="30.00 USD"', $html);
+
+    // remove plugin branding
+    $html = preg_replace('/<div class="wp-stripe-poweredby">(.*?)<\/div>/', '', $html);
+    return $html;
+}
