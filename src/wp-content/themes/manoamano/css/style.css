@@ -2048,6 +2048,7 @@ a[rel="prev"] {
  	width:25%;
  	float: left;
  	box-sizing: border-box;
+ 	-moz-box-sizing: border-box;
  	padding: 20px;
  	background: #333;
  	color: #333;
