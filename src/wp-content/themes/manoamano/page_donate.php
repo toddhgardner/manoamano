@@ -27,8 +27,9 @@ Template Name: Donation Template
             <div class="donate-tabs">
             	<div class="donate-tab donate-tab-1 active" data-content="1">
             		<div class="donate-tab-thumb">
-            			<?php if(get_field('thumb_image1')){ ?>
-            				
+            			<?php if($img =get_field('thumb_image1')){ ?>
+            				<?php $image = wp_get_attachment_image_src( $img['id'],'thumb-xs' ); ?>
+                                    <img src="<?php echo $image[0]; ?>" width=40 height=40/>
             			<?php }else{ ?>
             				<img src="<?php echo get_template_directory_uri(); ?>/images/donate-family.jpg" width="40" height="40"/>
             			<?php } ?>
@@ -40,11 +41,13 @@ Template Name: Donation Template
             	</div>
             	<div class="donate-tab donate-tab2"  data-content="2">
             		<div class="donate-tab-thumb">
-            			<?php if(get_field('thumb_image2')){ ?>
-            				
-            			<?php }else{ ?>
-            				<img src="<?php echo get_template_directory_uri(); ?>/images/donate-family.jpg" width="40" height="40"/>
-            			<?php } ?></div>
+            			<?php if($img =get_field('thumb_image2')){ ?>
+                                    <?php $image = wp_get_attachment_image_src( $img['id'],'thumb-xs' ); ?>
+                                    <img src="<?php echo $image[0]; ?>" width=40 height=40/>
+                              <?php }else{ ?>
+                                    <img src="<?php echo get_template_directory_uri(); ?>/images/donate-family.jpg" width="40" height="40"/>
+                              <?php } ?>
+                        </div>
             		<div class="donate-tab-title">
             			<?php echo get_field('title2'); ?>
             		</div>
@@ -52,11 +55,13 @@ Template Name: Donation Template
             	</div>
             	<div class="donate-tab donate-tab3"  data-content="3">
             		<div class="donate-tab-thumb">
-            			<?php if(get_field('thumb_image3')){ ?>
-            				
-            			<?php }else{ ?>
-            				<img src="<?php echo get_template_directory_uri(); ?>/images/donate-family.jpg" width="40" height="40"/>
-            			<?php } ?></div>
+            			<?php if($img =get_field('thumb_image3')){ ?>
+                                    <?php $image = wp_get_attachment_image_src( $img['id'],'thumb-xs' ); ?>
+                                    <img src="<?php echo $image[0]; ?>" width=40 height=40/>
+                              <?php }else{ ?>
+                                    <img src="<?php echo get_template_directory_uri(); ?>/images/donate-family.jpg" width="40" height="40"/>
+                              <?php } ?>
+                        </div>
             		<div class="donate-tab-title">
             			<?php echo get_field('title3'); ?>
             		</div>
@@ -64,11 +69,12 @@ Template Name: Donation Template
             	</div>
             	<div class="donate-tab donate-tab4"  data-content="4">
             		<div class="donate-tab-thumb">
-            			<?php if(get_field('thumb_image4')){ ?>
-            				
-            			<?php }else{ ?>
-            				<img src="<?php echo get_template_directory_uri(); ?>/images/donate-family.jpg" width="40" height="40"/>
-            			<?php } ?></div>
+            			<?php if($img =get_field('thumb_image4')){ ?>
+                                    <?php $image = wp_get_attachment_image_src( $img['id'],'thumb-xs' ); ?>
+                                    <img src="<?php echo $image[0]; ?>" width=40 height=40/>
+                              <?php }else{ ?>
+                                    <img src="<?php echo get_template_directory_uri(); ?>/images/donate-family.jpg" width="40" height="40"/>
+                              <?php } ?></div>
             		<div class="donate-tab-title">
             			<?php echo get_field('title4'); ?>
             		</div>

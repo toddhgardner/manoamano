@@ -2055,6 +2055,7 @@ a[rel="prev"] {
  }
  .donate-tab:hover{
  	background: #ccc;
+ 	cursor: pointer;
  }
 
  .donate-tab.active{
